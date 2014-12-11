@@ -11,7 +11,7 @@ gem "pg"
 #
 # NOTE: If you use PostgreSQL, you must still leave enabled the above mysql2
 # gem for Sphinx full text search to function.
-
+gem 'rails_12factor'
 gem "thinking-sphinx", "~> 3.0.6"
 
 gem "uglifier", ">= 1.3.0"
@@ -31,6 +31,8 @@ gem "oauth"
 
 # for parsing incoming mail
 gem "mail"
+
+ruby '2.0.0'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"

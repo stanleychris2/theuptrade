@@ -30,26 +30,26 @@
   <% end %>
 </head>
 <body>
-  <div id="wrapper">
-    <div id="header">
-      <div id="headerleft">
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+      
         <a id="l_holder" style="background-color: #<%= sprintf("%02x%02x%02x",
         [ 255, (@traffic * 7).floor + 50.0 ].min, 0, 0) %>;" href="/"
         title="<%= Rails.application.name %> (<%= @traffic.to_i %>)"></a>
-
+        
         <% links = {
           "/" => @cur_url == "/" ? Rails.application.name : "Home",
           "/recent" => "Recent",
           "/comments" => "Comments"
         } %>
-
+        
         <% if @user %>
           <% links.merge!({ "/threads" => "Your Threads",
             "/stories/new" => "Submit Story" }) %>
         <% end %>
-
+        
         <% links.merge!({ "/search" => "Search" }) %>
-
+        
         <% if @cur_url.present? && !links.keys.include?(@cur_url) &&
         @heading.present? %>
           <span id="headertitle">
@@ -57,39 +57,45 @@
           </span>
         <% end %>
 
-        <span class="headerlinks">
+        <ul class="nav navbar-nav navbar-left">
           <% links.each do |u,v| %>
+            <li>
             <a href="<%= u %>" <%= u == @cur_url ? raw("class=\"cur_url\"") :
               "" %>><%= v %></a>
+            </li>
           <% end %>
         </span>
       </div>
 
-      <div id="headerright">
-        <span class="headerlinks">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
         <a href="/filters" <%= @cur_url == "/filters" ?
           raw("class=\"cur_url\"") : "" %>>Filters</a>
+        </li>
+        <li>
         <% if @user %>
           <% if (count = @user.unread_message_count) > 0 %>
             <a href="/messages" class="new_messages <%= @cur_url == "/messages" ?
               "cur_url" : "" %>"><%= count %> New Message<%= count == 1 ? "" :
-              "s" %></a>
+              "s" %></a>     
           <% else %>
             <a href="/messages" <%= @cur_url == "/messages" ?
               raw("class=\"cur_url\"") : "" %>>Messages</a>
           <% end %>
-
+          </li>
+          <li>
           <a href="/settings" <%= @cur_url == "/settings" ?
             raw("class=\"cur_url\"") : "" %>><%= @user.username %>
             (<%= @user.karma %>)</a>
-
+          </li>
+          <li>
           <%= link_to "Logout", { :controller => "login", :action => "logout" },
             :data => { :confirm => "Are you sure you want to logout?" },
             :method => "post" %>
         <% else %>
           <a href="/login">Login</a>
         <% end %>
-        </span>
+        </li>
       </div>
 
       <div class="clear"></div>

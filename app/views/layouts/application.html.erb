@@ -29,16 +29,23 @@
       title="<%= @rss_link[:title] %>" href="<%= @rss_link[:href] %>" />
   <% end %>
 </head>
+
+<!-- Start editing page -->
+
 <body>
   <div class="navbar navbar-default navbar-fixed-top">
     <div class="navbar-header">
-      
-        <a id="l_holder" style="background-color: #<%= sprintf("%02x%02x%02x",
-        [ 255, (@traffic * 7).floor + 50.0 ].min, 0, 0) %>;" href="/"
-        title="<%= Rails.application.name %> (<%= @traffic.to_i %>)"></a>
-        
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><%= Rails.application.name %></a>
+    </div>
+
+<!-- below is ruby code to tell us when / when not to render nav links -->
+
         <% links = {
-          "/" => @cur_url == "/" ? Rails.application.name : "Home",
           "/recent" => "Recent",
           "/comments" => "Comments"
         } %>
@@ -57,23 +64,25 @@
           </span>
         <% end %>
 
-        <ul class="nav navbar-nav navbar-left">
-          <% links.each do |u,v| %>
+<!-- This is where I am putting the navbar html/css... responsive etc all that good stuff -->
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <% links.each do |u,v| %>
+          <ul class="nav navbar-nav">
             <li>
             <a href="<%= u %>" <%= u == @cur_url ? raw("class=\"cur_url\"") :
-              "" %>><%= v %></a>
+            "" %>><%= v %></a>
             </li>
-          <% end %>
-        </span>
-      </div>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-        <a href="/filters" <%= @cur_url == "/filters" ?
-          raw("class=\"cur_url\"") : "" %>>Filters</a>
-        </li>
-        <li>
-        <% if @user %>
+          </ul>
+        <% end %>
+      <form class="navbar-form navbar-left">
+        
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/filters" <%= @cur_url == "/filters" ?
+            raw("class=\"cur_url\"") : "" %>>Filters</a>
+          </li>
+          <li>
+          <% if @user %>
           <% if (count = @user.unread_message_count) > 0 %>
             <a href="/messages" class="new_messages <%= @cur_url == "/messages" ?
               "cur_url" : "" %>"><%= count %> New Message<%= count == 1 ? "" :
@@ -84,7 +93,7 @@
           <% end %>
           </li>
           <li>
-          <a href="/settings" <%= @cur_url == "/settings" ?
+            <a href="/settings" <%= @cur_url == "/settings" ?
             raw("class=\"cur_url\"") : "" %>><%= @user.username %>
             (<%= @user.karma %>)</a>
           </li>
@@ -92,11 +101,14 @@
           <%= link_to "Logout", { :controller => "login", :action => "logout" },
             :data => { :confirm => "Are you sure you want to logout?" },
             :method => "post" %>
-        <% else %>
+          <% else %>
           <a href="/login">Login</a>
-        <% end %>
-        </li>
+          <% end %>
+          </li>
+        </ul>  
       </div>
+    </div>
+  </div>
 
       <div class="clear"></div>
     </div>

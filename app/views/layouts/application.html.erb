@@ -42,7 +42,6 @@
       </button>
       <a class="navbar-brand" href="/"><%= Rails.application.name %></a>
     </div>
-
 <!-- below is ruby code to tell us when / when not to render nav links -->
 
         <% links = {
@@ -74,8 +73,7 @@
             </li>
           </ul>
         <% end %>
-      <form class="navbar-form navbar-left">
-        
+<!-- navbar right stuff -->
         <ul class="nav navbar-nav navbar-right">
           <li>
             <a href="/filters" <%= @cur_url == "/filters" ?
@@ -106,12 +104,8 @@
           <% end %>
           </li>
         </ul>  
-      </div>
     </div>
   </div>
-
-      <div class="clear"></div>
-    </div>
 
     <div id="inside">
       <% if flash[:error] %>
@@ -131,7 +125,6 @@
         <a href="/privacy">Privacy</a>
         <a href="/about">About</a>
       </div>
-      <div class="clear"></div>
     </div>
   </div>
 </body>

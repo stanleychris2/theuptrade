@@ -54,11 +54,11 @@ class << Rails.application
   end
 
   def domain
-    "example.com"
+    "theuptrade.com"
   end
 
   def name
-    "Example News"
+    "The Uptrade"
   end
 
   # used as mailing list prefix and countinual prefix, cannot have spaces

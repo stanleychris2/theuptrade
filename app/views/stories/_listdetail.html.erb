@@ -2,7 +2,9 @@
 class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 "downvoted" : "" %> <%= story.vote == 0 ? "hidden" : "" %> <%= story.is_expired? ?
 "expired" : "" %>">
-<div class="story_liner">
+
+
+<div class="container">
   <div class="voters">
     <% if @user %>
       <a class="upvoter"></a>

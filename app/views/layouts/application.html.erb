@@ -123,18 +123,21 @@
 
     <%= yield %>
 
-<div id="footer"
-    <div class="container">
+<div class="container-fluid"
+    <ul class="nav navbar-nav">
       <span class="pull-right" style="text-align: right">
-      <a href="/moderations">Moderation Log</a>
+      <a href="/moderations">Moderation</a>
+        |
         <% if @user && !@user.is_new? &&
         (iqc = InvitationRequest.verified_count) > 0 %>
-          <a href="/invitations">Invitation Queue (<%= iqc %>)</a>
+        <a href="/invitations">Invitation Queue (<%= iqc %>)</a>
         <% end %>
         <a href="/privacy">Privacy</a>
+        |
         <a href="/about">About</a>
+        |     
       </span>
-      </div>
+      </ul>
     </div>
 
 </body>

@@ -1,23 +1,29 @@
-<li id="story_<%= story.short_id %>" data-shortid="<%= story.short_id %>"
+
+
+<!-- Taking out previous logic for upvote/downvote used to display this view and replacing it with the below li
+<li id=
+"story_<%= story.short_id %>" data-shortid="<%= story.short_id %>"
 class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 "downvoted" : "" %> <%= story.vote == 0 ? "hidden" : "" %> <%= story.is_expired? ?
 "expired" : "" %>">
+-->
 
+<li>
 
 <div class="container">
-    <div class="col-md-1">
-      <% if @user %>
-        <a class="upvoter"></a>
-      <% else %>
-        <%= link_to "", login_url, :class => "upvoter" %>
-      <% end %>
-    
-      <div class="score"><%= story.score %></div>
-  
-    </div>
-  
 
-  <div class="col-md-11">
+  <div class=col-lg-1>
+    <% if @user %>
+        <span class="glyphicon glyphicon-arrow-up"></span>
+        <a class="upvoter"></a>
+    <% else %>
+      <%= link_to "", login_url, :class => "upvoter" %>
+    <% end %>
+    <div class="score"><%= story.score %></div>
+  </div>
+  
+  <div class=col-lg-11>
+  
     <span class="link">
       <% if story.can_be_seen_by_user?(@user) %>
         <a href="<%= story.url_or_comments_url %>"><%= story.title %></a>
@@ -27,6 +33,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
           "original submitter" %>]
       <% end %>
     </span>
+  
     <% if story.can_be_seen_by_user?(@user) %>
       <span class="tags">
         <% story.taggings.sort_by{|t| t.tag.tag }.sort_by{|t|
@@ -36,6 +43,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
             title="<%= tagging.tag.description %>"><%= tagging.tag.tag %></a>
         <% end %>
       </span>
+  
       <span class="domain"><%= story.domain %></span>
 
       <% if defined?(single_story) && single_story %>
@@ -57,9 +65,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
         <% end %>
       <% end %>
     <% end %>
-    
-
-
+  
     <div class="byline">
       <% if story.previewing %>
         by <a><%= story.user.username %></a>
@@ -125,10 +131,11 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
   </div>
 </div>
 
-
-
+<!---
 <div class="mobile_comments <%= story.comments_count == 0 ? "zero" : "" %>"
 style="display: none;">
   <a href="<%= story.comments_url %>"><%= story.comments_count %></a>
 </div>
+-->
 </li>
+

@@ -373,6 +373,7 @@ div.voters {
 	float: left;
 	margin-top: 0px;
 	width: 40px;
+	boarder: 3px solid #cc0000
 }
 
 div.voters div.score {
@@ -388,11 +389,12 @@ li.story div.voters div.score {
 	margin-top: 2px;
 }
 
-div.voters .upvoter,
-div.voters .downvoter {
-	border-color: transparent transparent #bbb transparent;
+
+div.container .col-lg-1 .upvoter,
+div.container .col-lg-1 .downvoter {
+	border-color: transparent transparent #000 transparent;
 	border-style: solid;
-	border-width: 6px;
+	border-width: 15px;
 	text-decoration: none;
 	width: 0px;
 	height: 0;
@@ -402,7 +404,8 @@ div.voters .downvoter {
 	display: block;
 }
 
-div.voters .upvoter:hover,
+
+div.container .col-lg-1 .upvoter:hover,
 .upvoted div.voters .upvoter {
 	border-bottom-color: #ac130d;
 }

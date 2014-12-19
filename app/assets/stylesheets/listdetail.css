@@ -7,12 +7,60 @@
 
 .uvote {
   font-size: 10px;
-  line-height: 0.3;
+  line-height: 0;
   background-color: #7cda94;
+  width: 15px;
+  padding: 3px 0px;
 }
 
 .dvote {
   font-size: 10px;
-  line-height: 0.3;
+  line-height: 0;
   background-color: #d7552d;
+  width: 15px;
+  padding: 3px 0px;
+}
+
+.tagbutton {
+  font-size: 10px;
+  line-height: 0;
+  background-color: #cccccc;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+.domain {
+  font-size: 10px;
+}
+
+body {
+  font-size: 12px;
+}
+
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-left: 0px
+}
+
+.col-xs-1 {
+/* width: 8.33333333%; */
+}
+
+.col-xs-9 {
+  padding-right: 10px;
+  padding-left: 0px;
+  padding-top: 5px;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #9CDA94;
+;
 }

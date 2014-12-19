@@ -4,15 +4,17 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 "expired" : "" %>">
 
 
-<div class="container">
-    <div class="col-md-1">
+<div class="story_liner container-fluid">
+    <div class="voters col-md-1">
       <% if @user %>
-        <a class="upvoter"></a>
+        <a class="upvoter btn btn-default btn-block uvote">Mine</a>
+        <div class="score text-center"><%= story.score %></div>
+        <a class="downvoter btn btn-default btn-block dvote">Yours</a>
       <% else %>
-        <%= link_to "", login_url, :class => "upvoter" %>
+        <%= link_to "Mine", login_url, :class => "upvoter btn btn-default" %>
+        <div class="score text-center"><%= story.score %></div>
+        <%= link_to "Yours", login_url, :class => "downvoter btn btn-default" %>
       <% end %>
-    
-      <div class="score"><%= story.score %></div>
   
     </div>
   

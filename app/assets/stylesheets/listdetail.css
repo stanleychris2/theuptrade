@@ -6,3 +6,7 @@ li .link {
 li .link a {
 	font-size: 11pt;
 	text-decoration: none;
+
+p.text-center {
+	margin-bottom:0;
+}

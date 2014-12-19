@@ -1,5 +1,3 @@
-
-
 <!-- HTML LI tag, w/ css "story... tag"-->
 <li id="story_<%= story.short_id %>" 
 data-shortid="<%= story.short_id %>"
@@ -13,15 +11,17 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
     <div class="col-sm-1">
     
     <% if @user %>
-      <a class="btn btn-primary btn-xs btn-block" id="upvoter">Good</a>
-      <a class="btn btn-primary btn-xs btn-block" id="upvoter">Bad</a>
+      <a class="btn btn-success btn-xs btn" id="upvoter">mine</a>
+      <p class="text-center"><strong><%= story.score %></strong></p> 
+      <a class="btn btn-danger btn-xs btn" id="upvoter">yours</a>
     <% else %>
       <%= link_to "Upvote", login_url, :class => "btn btn-primary btn-xs btn-block"%>
+      <p class="text-center"><strong><%= story.score %></strong></p> 
       <%= link_to "Downvote", login_url, :class => "btn btn-primary btn-xs btn-block"%>
     <% end %>
 
 
-      <p class="text-center"><%= story.score %></p> 
+      
     
     </div>  
   

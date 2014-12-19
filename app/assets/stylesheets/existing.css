@@ -43,6 +43,8 @@ div.s {
 	height: 1px;
 }
 
+/* TAGS!!!! */
+
 a.tag {
 	background-color: #fffcd7;
 	border: 1px solid #d5d458;
@@ -369,14 +371,14 @@ ol.search_results li.story {
 	padding-bottom: 0.75em;
 }
 
-div.voters {
+div.col-md-1 {
 	float: left;
 	margin-top: 0px;
 	width: 40px;
 	boarder: 3px solid #cc0000
 }
 
-div.voters div.score {
+div.col-md-1 div.score {
 	color: #aaa;
 	font-size: 9pt;
 	margin-top: 1px;
@@ -384,17 +386,16 @@ div.voters div.score {
 	text-align: center;
 }
 
-li.story div.voters div.score {
+li.story div.col-md-1 div.score {
 	font-size: 9.5pt;
 	margin-top: 2px;
 }
 
 
-div.container .col-lg-1 .upvoter,
-div.container .col-lg-1 .downvoter {
+div.col-md-1 .upvoter {
 	border-color: transparent transparent #000 transparent;
 	border-style: solid;
-	border-width: 15px;
+	border-width: 5px;
 	text-decoration: none;
 	width: 0px;
 	height: 0;
@@ -405,29 +406,33 @@ div.container .col-lg-1 .downvoter {
 }
 
 
-div.container .col-lg-1 .upvoter:hover,
-.upvoted div.voters .upvoter {
+div.col-md-1 .upvoter:hover,
+.upvoted div.col-md-1 .upvoter {
 	border-bottom-color: #ac130d;
 }
 
-div.voters .upvoter {
+div.col-md-1 .upvoter {
 	border-bottom-width: 11px;
 }
 
-div.voters .downvoter {
-	border-color: #bbb transparent transparent transparent;
+div.col-md-1 .downvoter {
+	border-color: transparent transparent #000 transparent;
+	border-style: solid;
 	border-width: 5px;
-	margin-top: 4px;
-	margin-left: 15px;
-	margin-bottom: -5px;
-	border-top-width: 9px;
+	text-decoration: none;
+	width: 0px;
+	height: 0;
+	margin-bottom: 0px;
+	margin-left: 14px;
+	padding: 0;
+	display: block;
 }
-div.voters .downvoter:hover,
-.downvoted div.voters .downvoter {
+div.col-md-1 .downvoter:hover,
+.downvoted div.col-md-1 .downvoter {
 	border-top-color: gray;
 }
 
-div.voters .downvoter.downvoter_stub {
+div.col-md-1 .downvoter.downvoter_stub {
 	border-color: transparent;
 }
 

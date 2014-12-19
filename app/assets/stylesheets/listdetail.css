@@ -1,0 +1,8 @@
+li .link {
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+li .link a {
+	font-size: 11pt;
+	text-decoration: none;

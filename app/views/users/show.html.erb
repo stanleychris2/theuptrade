@@ -1,25 +1,40 @@
-<div class="box wide">
-  <div class="legend">
+<div class="container">
+  <center>
+  <div class="col-xs-12">
+    <h4>
     <% if !@showing_user.is_active? %>
-      <span class="inactive_user">
+
     <% elsif @showing_user.is_new? %>
-      <span class="new_user">
+
     <% else %>
-      <span>
+
     <% end %>
       <%= @showing_user.username %>
-    </span>
-
+    </h4>
+    <h6>
     <% if @user && @showing_user.is_active? %>
-      (<a href="/messages?to=<%= @showing_user.username %>">Send a Message</a>)
+      (<a href="/messages?to=<%= @showing_user.username %>">Message</a>)
     <% end %>
-  </div>
+  </h6>
 
   <% if @showing_user.is_active? %>
-    <div id="gravatar">
-      <img src="<%= @showing_user.avatar_url %>">
+      <img src="<%= @showing_user.avatar_url %>" alt="..." class="img-rounded">
+  <% end %>
+
+    <% if @showing_user.is_active? %>
+    <h6>About</h6>
+
+    <div id="user_about" class="col-xs-12">
+      <% if @showing_user.about.present? %>
+        <%= raw @showing_user.linkified_about %>
+      <% else %>
+        <span class="na">A mystery...</span>
+      <% end %>
     </div>
   <% end %>
+
+
+
 
   <label class="required">Status:</label>
   <span class="d"
@@ -75,16 +90,21 @@
       per story/comment
   </span>
   <br>
+</div>
+</center>
 
   <label class="required">Stories Submitted:</label>
   <span class="d">
+    
     <% tag = @showing_user.most_common_story_tag %>
-    <a href="/newest/<%= @showing_user.username %>"><%=
-      @showing_user.stories_submitted_count %></a><%= tag ? ", " : "" %>
-    <% if tag %>
-      most commonly tagged <a href="<%= tag_url(tag.tag) %>"
-        class="<%= tag.css_class %>" title="<%= tag.description %>"><%=
-        tag.tag %></a>
+    
+    <a href="/newest/<%= @showing_user.username %>">
+
+
+    <%=@showing_user.stories_submitted_count %></a><%= tag ? ", " : "" %>
+    
+    <% if tag %> most commonly tagged <a href="<%= tag_url(tag.tag) %>
+    "class="<%= tag.css_class %>" title="<%= tag.description %>"><%=tag.tag %></a>
     <% end %>
   </span>
   <br>
@@ -96,6 +116,9 @@
   </span>
   <br>
 
+
+
+<!--
   <% if @showing_user.is_active? %>
     <label class="required">About:</label>
 
@@ -107,4 +130,5 @@
       <% end %>
     </div>
   <% end %>
+-->
 </div>

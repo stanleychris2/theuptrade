@@ -120,7 +120,7 @@ class StoriesController < ApplicationController
     end
 
     if @story.can_be_seen_by_user?(@user)
-      @title = @story.title
+      @title = @story.tile
     else
       @title = "[Story removed]"
     end

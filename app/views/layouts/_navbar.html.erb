@@ -1,0 +1,81 @@
+  <div class="navbar navbar-default">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><%= Rails.application.name %></a>
+    </div>
+<!-- below is ruby code to tell us when / when not to render nav links -->
+
+        <% links = {
+          "/recent" => "Recent",
+          "/comments" => "Comments"
+        } %>
+        
+        <% if @user %>
+          <% links.merge!({ "/threads" => "Your Threads",
+            "/stories/new" => "Submit Story" }) %>
+        <% end %>
+        
+        <% links.merge!({ "/search" => "Search" }) %>
+        
+        <% if @cur_url.present? && !links.keys.include?(@cur_url) &&
+        @heading.present? %>
+          <span id="headertitle">
+            <a href="<%= @cur_url %>"><%= @heading %></a>
+          </span>
+        <% end %>
+
+<!-- This is where I am putting the navbar html/css... responsive etc all that good stuff -->
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <% links.each do |u,v| %>
+          <ul class="nav navbar-nav">
+            <li>
+            <a href="<%= u %>" <%= u == @cur_url ? raw("class=\"cur_url\"") :
+            "" %>><%= v %></a>
+            </li>
+          </ul>
+        <% end %>
+<!-- navbar right stuff -->
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/filters" <%= @cur_url == "/filters" ?
+              raw("class=\"cur_url\"") : "" %>>Filters</a>
+            </li>
+            <li>
+              <% if @user %>
+              <% if (count = @user.unread_message_count) > 0 %>
+              <a href="/messages" class="new_messages <%= @cur_url == "/messages" ?
+              "cur_url" : "" %>"><%= count %> New Message<%= count == 1 ? "" :
+              "s" %></a>     
+              <% else %>
+              <a href="/messages" <%= @cur_url == "/messages" ?
+              raw("class=\"cur_url\"") : "" %>>Messages</a>
+              <% end %>
+            </li>
+            <li>
+              <a href="/settings" <%= @cur_url == "/settings" ?
+              raw("class=\"cur_url\"") : "" %>><%= @user.username %>
+              (<%= @user.karma %>)</a>
+            </li>
+            <li>
+              <%= link_to "Logout", { :controller => "login", :action => "logout" },
+              :data => { :confirm => "Are you sure you want to logout?" },
+              :method => "post" %>
+              <% else %>
+              <a href="/login">Login</a>
+              <% end %>
+            </li>
+          </ul>  
+    </div>
+  </div>
+<!--
+    <div id="inside">
+      <% if flash[:error] %>
+        <div class="flash-error"><%= flash[:error] %></div>
+      <% elsif flash[:success] %>
+        <div class="flash-success"><%= flash[:success] %></div>
+      <% end %>
+-->

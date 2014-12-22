@@ -13,15 +13,13 @@
       <label for="exampleInputPassword1" class="col-xs-1 control-label" <%= label_tag :password, "Password:" %> </label>
       <input type="password" class="form-control" id=<%= password_field_tag :password%>
     </div>
-  </div>
+    <%= submit_tag "Login", :class => "btn btn-default" %>
 
 
+    <div class="form-group">
+    <br>
     <p>
-    <%= submit_tag "Login" %>
-    </p>
-
-    <p>
-    Forgot your password? <%= link_to "Reset your password",
+      Forgot your password? <%= link_to "Reset your password",
       forgot_password_url %>.
     </p>
 
@@ -34,8 +32,8 @@
     <% else %>
       invitation.
     <% end %>
-    </p>
-
+    </div>
+  </row>
     <% if @referer.present? %>
       <%= hidden_field_tag :referer, @referer %>
     <% end %>

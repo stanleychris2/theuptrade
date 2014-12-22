@@ -43,7 +43,11 @@ ol {
   margin-top: 0;
   margin-bottom: 10px;
   padding-left: 0px
+
 }
+
+
+
 
 .col-xs-1 {
 /* width: 8.33333333%; */
@@ -63,4 +67,6 @@ a:hover,
 a:focus {
   color: #9CDA94;
 ;
+
+
 }

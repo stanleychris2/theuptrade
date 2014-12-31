@@ -13,7 +13,9 @@ Lobsters::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+  config.action_mailer.default_url_options = { :host => 'http://0.0.0.0:3000/' }
 
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.delivery_method = :smtp
 
@@ -24,7 +26,7 @@ Lobsters::Application.configure do
     :domain => "theuptrade.com",
     :authentication => "plain",
     :user_name => "no-reply@theuptrade.com",
-    :password => "theuptrademailer"
+    :password => "cubschem22"
   }
 
   # Don't care if the mailer can't send.

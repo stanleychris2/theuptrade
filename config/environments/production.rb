@@ -78,7 +78,7 @@ Lobsters::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-
+  config.action_mailer.default_url_options = { :host => "theuptrade.com" }
 
   config.action_mailer.delivery_method = :smtp
 
@@ -89,7 +89,7 @@ Lobsters::Application.configure do
     :domain => "theuptrade.com",
     :authentication => "plain",
     :user_name => "no-reply@theuptrade.com",
-    :password => "theuptrademailer"
+    :password => "cubschem22"
   }
 end
 

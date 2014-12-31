@@ -77,4 +77,21 @@ Lobsters::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "theuptrade.com",
+    :authentication => "plain",
+    :user_name => "no-reply@theuptrade.com",
+    :password => "theuptrademailer"
+  }
 end
+
+Lobsters::Application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[The UpTrade Exception] ",
+    :sender_address => %{"Uptrade Exception" <no-reply@theuptrade.com>},
+    :exception_recipients => %w{stanleychris2@gmail.com}
+  }

@@ -15,18 +15,18 @@ Lobsters::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'http://0.0.0.0:3000/' }
 
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
 
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
     :address => "smtp.gmail.com",
     :port => 587,
     :domain => "theuptrade.com",
     :authentication => "plain",
-    :user_name => "no-reply@theuptrade.com",
-    :password => "cubschem22"
+    :user_name => "chris@theuptrade.com",
+    :password => "cubschem22",
+    :enable_starttls_auto => true
   }
 
   # Don't care if the mailer can't send.

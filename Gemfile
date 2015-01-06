@@ -27,6 +27,8 @@ gem "nokogiri", "= 1.6.1"
 gem "htmlentities"
 gem "rdiscount"
 
+gem 'bootstrap_form'
+
 # for twitter-posting bot
 gem "oauth"
 

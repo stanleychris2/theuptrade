@@ -1,15 +1,16 @@
 <div class="container" id="story_box">
-  <h2>
-    Submit a Story
-  </h2>
+  <div class="row">
+    <h3>Submit a Story</h3>
+  </div>
 
-  <div id="story_holder">
+  <div id="row">
     <%= form_for @story do |f| %>
       <%= render :partial => "stories/form", :locals => { :story => @story,
         :f => f } %>
-        <%= submit_tag "Submit" %>
-<!---
-      <div class="container">
+
+      <p></p>
+
+      <div class="box">
         <div class="boxline markdown_help_toggler">
           <div class="markdown_help_label">
             Markdown formatting available
@@ -24,9 +25,8 @@
 
           <%= render :partial => "global/markdownhelp",
             :locals => { :allow_images => true } %>
-
         </div>
-      </div>-->
+      </div>
     <% end %>
   </div>
 </div>

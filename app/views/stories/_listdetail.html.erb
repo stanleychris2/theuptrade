@@ -7,17 +7,18 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
   <div class="row">
     <div class="voters col-xs-1">
       <% if @user %>
-        <a class="upvoter btn uvote"></a>
+        <!---<a class="upvoter btn uvote"></a>-->
+        <a class="upvoter btn btn-default"></a>
         <div class="score text-center"><%= story.score %></div>
-        <a class="downvoter btn dvote"></a>
+        <a class="downvoter btn btn-default"></a>
       <% else %>
-        <%= link_to "", login_url, :class => "upvoter btn uvote" %>
+        <%= link_to "", login_url, :class => "upvoter btn btn-default" %>
         <div class="score text-center"><%= story.score %></div>
-        <%= link_to "", login_url, :class => "downvoter btn dvote" %>
+        <%= link_to "", login_url, :class => "downvoter btn btn-default" %>
       <% end %>
     </div>
   
-    <div class="col-md-8 col-xs-6 trade">
+    <div class="col-md-8 col-xs-9 trade">
       <h5>
       <% if story.can_be_seen_by_user?(@user) %>
         <a href="<%= story.url_or_comments_url %>"><%= story.title %></a>

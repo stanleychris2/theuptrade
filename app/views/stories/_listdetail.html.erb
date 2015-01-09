@@ -3,7 +3,7 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
 "downvoted" : "" %> <%= story.vote == 0 ? "hidden" : "" %> <%= story.is_expired? ?
 "expired" : "" %>   ">
 
-<div class="container"
+<div class="container border">
   <div class="row">
     <div class="voters col-xs-1">
       <% if @user %>
@@ -17,8 +17,8 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
       <% end %>
     </div>
   
-  <div class="col-xs-9 trade">
-    <span class="link h5">
+    <div class="col-md-8 col-xs-6 trade">
+      <h5>
       <% if story.can_be_seen_by_user?(@user) %>
         <a href="<%= story.url_or_comments_url %>"><%= story.title %></a>
       <% end %>
@@ -26,42 +26,8 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
         [Story removed by <%= story.is_moderated? ? "moderator" :
           "original submitter" %>]
       <% end %>
-    </span>
-
-    <% if story.can_be_seen_by_user?(@user) %>
-      <span class="tags btn tagbutton">
-        <% story.taggings.sort_by{|t| t.tag.tag }.sort_by{|t|
-        t.tag.is_media?? -1 : 0 }.each do |tagging| %>
-          <a href="<%= tag_url(tagging.tag.tag) %>"
-            class="<%= tagging.tag.css_class %>"
-            title="<%= tagging.tag.description %>"><%= tagging.tag.tag %></a>
-        <% end %>
-      </span>
-      <span class="domain pdf"><%= story.domain %></span>
-
-      <% if defined?(single_story) && single_story %>
-        <% story.merged_stories.each do |ms| %>
-          <br>
-          <span class="merge"></span>
-          <span class="link">
-            <a href="<%= ms.url_or_comments_url %>"><%= ms.title %></a>
-          </span>
-          <span class="tags">
-            <% ms.taggings.sort_by{|t| t.tag.tag }.sort_by{|t|
-            t.tag.tag == "pdf" ? -1 : 0 }.each do |tagging| %>
-              <a href="<%= tag_url(tagging.tag.tag) %>"
-                class="<%= tagging.tag.css_class %>"
-                title="<%= tagging.tag.description %>"><%= tagging.tag.tag %></a>
-            <% end %>
-          </span>
-          <span class="domain"><%= ms.domain %></span>
-        <% end %>
-      <% end %>
-    <% end %>
-    
-
-
-    <div class="byline">
+      </h5>
+      <h6>
       <% if story.previewing %>
         by <a><%= story.user.username %></a>
         just now
@@ -124,9 +90,44 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
           <% end %>
         <% end %>
       <% end %>
+      </h6>
     </div>
+
+  <div class="col-xs-1 pull-right">
+    <h5>
+    <% if story.can_be_seen_by_user?(@user) %>
+    <span class="tags btn tagbutton pull-right">
+        <% story.taggings.sort_by{|t| t.tag.tag }.sort_by{|t|
+        t.tag.is_media?? -1 : 0 }.each do |tagging| %>
+          <a href="<%= tag_url(tagging.tag.tag) %>"
+            class="<%= tagging.tag.css_class %>"
+            title="<%= tagging.tag.description %>"><%= tagging.tag.tag %></a>
+        <% end %>
+      </span>
+      </h5>
+
+      <h6><%= story.domain %></h6>
+
+      <% if defined?(single_story) && single_story %>
+        <% story.merged_stories.each do |ms| %>
+          <br>
+          <span class="merge"></span>
+          <span class="link">
+            <a href="<%= ms.url_or_comments_url %>"><%= ms.title %></a>
+          </span>
+          <span class="tags">
+            <% ms.taggings.sort_by{|t| t.tag.tag }.sort_by{|t|
+            t.tag.tag == "pdf" ? -1 : 0 }.each do |tagging| %>
+              <a href="<%= tag_url(tagging.tag.tag) %>"
+                class="<%= tagging.tag.css_class %>"
+                title="<%= tagging.tag.description %>"><%= tagging.tag.tag %></a>
+            <% end %>
+          </span>
+          <span class="domain"><%= ms.domain %></span>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
-</row>
 </div>
 
 <!--
@@ -135,5 +136,5 @@ style="display: none;">
   <a href="<%= story.comments_url %>"><%= story.comments_count %></a>
 </div>
 -->
-<hr />
+
 </li>

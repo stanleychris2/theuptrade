@@ -8,17 +8,17 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
     <div class="voters col-xs-1">
       <% if @user %>
         <!---<a class="upvoter btn uvote"></a>-->
-        <a class="upvoter btn btn-default"></a>
+        <a class="upvoter btn btn-default up"></a>
         <div class="score text-center"><%= story.score %></div>
-        <a class="downvoter btn btn-default"></a>
+        <a class="downvoter btn btn-default down"></a>
       <% else %>
-        <%= link_to "", login_url, :class => "upvoter btn btn-default" %>
+        <%= link_to "", login_url, :class => "upvoter btn btn-default up" %>
         <div class="score text-center"><%= story.score %></div>
-        <%= link_to "", login_url, :class => "downvoter btn btn-default" %>
+        <%= link_to "", login_url, :class => "downvoter btn btn-default down" %>
       <% end %>
     </div>
   
-    <div class="col-md-8 col-xs-9 trade">
+    <div class="col-md-6 col-lg-6 col-xs-10 trade">
       <h5>
       <% if story.can_be_seen_by_user?(@user) %>
         <a href="<%= story.url_or_comments_url %>"><%= story.title %></a>
@@ -74,15 +74,15 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
             (hidden by <%= pluralize(story.hider_count, "user") %>)
           <% end %>
         <% end %>
+        
         <% if !story.is_gone? && (@user || story.comments_count > 0) %>
         
           <!--- feeds to story line 190-->
-          <span class="comments_label">
-            |
+          <div class="row comments_label">
             <a href="<%= story.comments_url %>"><%= story.comments_count == 0 ?
-              "discuss" : "#{story.comments_count} comment" <<
+              "Start the dicussion" : "#{story.comments_count} comment" <<
               (story.comments_count == 1 ? "" : "s") %></a>
-          </span>
+          </div>
         <% end %>
 
         <% if defined?(single_story) && single_story %>
@@ -97,17 +97,16 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
   <div class="col-xs-1 pull-right">
     <h5>
     <% if story.can_be_seen_by_user?(@user) %>
-    <span class="tags btn tagbutton pull-right">
         <% story.taggings.sort_by{|t| t.tag.tag }.sort_by{|t|
         t.tag.is_media?? -1 : 0 }.each do |tagging| %>
           <a href="<%= tag_url(tagging.tag.tag) %>"
-            class="<%= tagging.tag.css_class %>"
+            class="<%= tagging.tag.css_class %>, btn tagbutton pull-right"
             title="<%= tagging.tag.description %>"><%= tagging.tag.tag %></a>
         <% end %>
-      </span>
       </h5>
-
+      <span class="pull-right"
       <h6><%= story.domain %></h6>
+      </span>
 
       <% if defined?(single_story) && single_story %>
         <% story.merged_stories.each do |ms| %>

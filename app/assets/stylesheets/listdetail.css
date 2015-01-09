@@ -21,6 +21,14 @@
   padding: 3px 0px;
 }
 
+.up {
+  background-color: #62b280;
+}
+
+.down {
+  background-color: #bf4a36;
+}
+
 .tagbutton {
   font-size: 10px;
   line-height: 0;
@@ -29,6 +37,7 @@
   padding-bottom: 6px;
   padding-right: 6px;
   padding-left: 6px;
+  margin-right: 2px;
 }
 
 .domain {
@@ -44,6 +53,12 @@ ol {
   margin-bottom: 10px;
   padding-left: 0px
 
+}
+
+.comments_label{
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 2px;
 }
 
 .btn-default.fetch {
@@ -83,11 +98,12 @@ a:focus {
 
 h5 {
   margin-top: 0px;
+  margin-bottom: 5px  ;
 }
 
 h6 {
-  margin-top: 15px;
-  margin-bottom: 6px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
  .border {

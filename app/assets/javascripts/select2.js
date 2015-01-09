@@ -1095,13 +1095,12 @@
 
         createContainer: function () {
             return $("<div></div>", {
-                "class": "select2-container select2-container-multi",
-                "style": "width: " + this.getContainerWidth()
-            }).html([
-                "    <ul class='select2-choices'>",
+                "class": "select2-container select2-container-multi ",
+                "style": "width: 100%" + this.getContainerWidth()}).html([
+                "    <ul class='select2-choices form-control'>",
                 //"<li class='select2-search-choice'><span>California</span><a href="javascript:void(0)" class="select2-search-choice-close"></a></li>" ,
                 "  <li class='select2-search-field'>" ,
-                "    <input type='text' autocomplete='off' style='width: 25px;'>" ,
+                "    <input type='text' autocomplete='off' " ,
                 "  </li>" ,
                 "</ul>" ,
                 "<div class='select2-drop' style='display:none;'>" ,

@@ -8,13 +8,16 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
     <div class="voters col-xs-1">
       <% if @user %>
         <!---<a class="upvoter btn uvote"></a>-->
-        <a class="upvoter btn btn-default up"></a>
+        <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
         <div class="score text-center"><%= story.score %></div>
-        <a class="downvoter btn btn-default down"></a>
+        <a class="downvoter btn btn-default down"><div class="arrow-down"></div></a>
       <% else %>
-        <%= link_to "", login_url, :class => "upvoter btn btn-default up" %>
+
+        <a class= "btn btn-default up" href="/login"><div class="arrow-up"></div></a>
+
+
         <div class="score text-center"><%= story.score %></div>
-        <%= link_to "", login_url, :class => "downvoter btn btn-default down" %>
+        <a class= "btn btn-default down" href="/login"><div class="arrow-down"></div></a>
       <% end %>
     </div>
   
@@ -23,7 +26,7 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
       <% if story.can_be_seen_by_user?(@user) %>
         <a href="<%= story.url_or_comments_url %>"><%= story.title %></a>
       <% end %>
-      <% if story.is_gone? %>
+      <% if story.is_gone? %>`
         [Story removed by <%= story.is_moderated? ? "moderator" :
           "original submitter" %>]
       <% end %>

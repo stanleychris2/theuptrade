@@ -22,11 +22,21 @@
 }
 
 .up {
-  background-color: #62b280;
+  background-color: #F8F8F8;
+}
+
+.up:hover {
+  background: #74ce99;
+  text-decoration: none;
+}
+
+.down:hover {
+  background: #c0552d;
+  text-decoration: none;
 }
 
 .down {
-  background-color: #bf4a36;
+  background-color: #F8F8F8;
 }
 
 .tagbutton {
@@ -72,7 +82,7 @@ margin-bottom: 8px;
 }
 
 .btn-default{
-  padding:10px 10px;
+  padding:5px 5px;
 }
 .col-xs-9 {
   padding-right: 10px;
@@ -85,11 +95,12 @@ a {
   text-decoration: none;
 }
 
+/*
 a:hover,
 a:focus {
-  color: #9CDA94;
+  color: green;
 }
-
+*/
 .trade {
   padding-left: 0px;
   padding-right: 0px;
@@ -112,6 +123,26 @@ h6 {
   border-bottom-style: inset;
   margin-top: -10px;
   margin-bottom: 0px;
+}
+
+
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  
+  border-bottom: 6px solid #515151;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  
+  border-top: 6px solid #515151;
 }
 
 

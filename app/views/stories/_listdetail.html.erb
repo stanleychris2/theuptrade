@@ -4,7 +4,7 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
 "expired" : "" %>   ">
 
 <div class="container border">
-  <div class="row">
+  <div class="row overall">
     <div class="voters col-xs-1">
       <% if @user %>
         <!---<a class="upvoter btn uvote"></a>-->
@@ -22,15 +22,15 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
     </div>
   
     <div class="col-md-6 col-lg-6 col-xs-10 trade">
-      <h5>
+      <h4>
       <% if story.can_be_seen_by_user?(@user) %>
-        <a href="<%= story.url_or_comments_url %>"><%= story.title %></a>
+        <a id="title" href="<%= story.url_or_comments_url %>"><%= story.title %></a>
       <% end %>
       <% if story.is_gone? %>`
         [Story removed by <%= story.is_moderated? ? "moderator" :
           "original submitter" %>]
       <% end %>
-      </h5>
+      </h4>
       <h6>
       <% if story.previewing %>
         by <a><%= story.user.username %></a>

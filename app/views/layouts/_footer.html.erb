@@ -1,17 +1,18 @@
 
-<div class="container-fluid"
-    <ul class="nav navbar-nav">
+
+<footer class="footer">
+<div class="container">
       <span class="pull-right" style="text-align: right">
-      <a href="/moderations">Moderation</a>
+      <a href="/moderations" id="footer-color">Moderation</a>
         |
         <% if @user && !@user.is_new? &&
         (iqc = InvitationRequest.verified_count) > 0 %>
-        <a href="/invitations">Invitation Queue (<%= iqc %>)</a>
+        <a href="/invitations"id="footer-color">Invitation Queue (<%= iqc %>)</a>
         <% end %>
-        <a href="/privacy">Privacy</a>
+        <a href="/privacy"id="footer-color">Privacy</a>
         |
-        <a href="/about">About</a>
+        <a href="/about"id="footer-color">About</a>
         |     
       </span>
-      </ul>
     </div>
+</footer>

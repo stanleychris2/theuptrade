@@ -7,7 +7,7 @@
   <% end %>
 </ol>
 
-<div class="morelink">
+<div class="morelink btn btn-default">
   <% if @page && @page > 1 %>
     <a href="/comments<%= @page == 2 ? "" : "/page/#{@page - 1}" %>">&lt;&lt; 
       Page <%= @page - 1 %></a>

@@ -17,7 +17,13 @@ body{
 
 .overall{
   padding-top: 8px;
-  background-color: white;
+  /*background-color: white;*/
+}
+
+.overall.signup{
+  margin-bottom: 10px;
+  font-size: 24px;
+  padding-bottom: 8px;
 }
 
 .uvote {
@@ -37,25 +43,25 @@ body{
 }
 
 .up {
-  background-color: #ffffff;
+  background-color: #d3d4d5;
 }
 
 .up:hover {
-  background: #d3d4d5;
+  background: #ffffff;
   text-decoration: none;
     -webkit-transition:width .25s, height .25s, background-color .25s, -webkit-transform .25s;
     transition:width .25s, height .25s, background-color .25s, transform .25s;
 }
 
 .down:hover {
-  background: #d3d4d5;
+  background: #ffffff;
   text-decoration: none;
     -webkit-transition:width .25s, height .25s, background-color .25s, -webkit-transform .25s;
     transition:width .25s, height .25s, background-color .25s, transform .25s;
 }
 
 .down {
-  background-color: #ffffff;
+  background-color: #d3d4d5;
 }
 
 .tagbutton:hover{
@@ -144,6 +150,7 @@ a:focus {
 }
 #title {
   color: #343434;
+  font-weight: 400;
 }
 
 body{
@@ -191,5 +198,50 @@ h6 {
   border-top: 6px solid #c0552d;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color: #252526;
+}
+
+.footer .container{
+  padding-top: 16px; 
+  font-size: 16px;
+}
+
+#footer-color {
+  color: #565656;
+}
+
+#footer-color:hover{
+  color: #878787;
+}
+
+.page {
+  background-color: #d3d4d5;
+}
+
+.page .a{
+  color: #d3d4d5;
+}
+
+.morelink .btn .btn-default .page .a {
+  color: black;
+}
+
+.byline {
+  font-size: 16px;
+}
 
 }

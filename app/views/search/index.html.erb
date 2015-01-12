@@ -1,13 +1,15 @@
-<div class="box">
-  <div class="legend">
+<div class="container">
+  <h4>
     Search
-  </div>
+  </h4>
 
   <%= form_tag "/search", :method => :get do %>
     <div class="boxline">
-      <%= text_field_tag "q", @search.q, { :size => 40 }.
-        merge(@search.q.present? ? {} : { :autofocus => "autofocus" }) %>
-      <input type="submit" value="Search">
+      
+
+      <%= text_field_tag "q", @search.q, { :size => 40 }.merge(@search.q.present? ? {} : { :autofocus => "autofocus" })%>
+
+      <input type="submit" value="Search" class="btn btn-default">
     </div>
 
     <div class="boxline">

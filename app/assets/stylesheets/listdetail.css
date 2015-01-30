@@ -16,7 +16,7 @@ body{
 }
 
 .overall{
-  padding-top: 8px;
+  padding-top: 0px;
   /*background-color: white;*/
 }
 
@@ -243,5 +243,7 @@ body {
 .byline {
   font-size: 16px;
 }
+
+
 
 }

@@ -3953,7 +3953,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand > img {
   display: block;
-  margin-top: -12px;
+  margin-top: -3px;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,

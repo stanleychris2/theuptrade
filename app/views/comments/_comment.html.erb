@@ -16,10 +16,7 @@ class="border container overall comment <%= comment.current_vote ? (comment.curr
         <div class="score text-center"><%= comment.score %></div>
         <a class="downvoter btn btn-default down"><div class="arrow-down"></div></a>
       <% else %>
-
         <a class= "btn btn-default up" href="/login"><div class="arrow-up"></div></a>
-
-
         <div class="score text-center"><%= comment.score %></div>
         <a class= "btn btn-default down" href="/login"><div class="arrow-down"></div></a>
       <% end %>
@@ -28,8 +25,12 @@ class="border container overall comment <%= comment.current_vote ? (comment.curr
 
 
 
-  <div class="col-md-6 col-lg-10   col-xs-10">
+  <div class="col-xs-9">
+
     <div class="byline">
+      <% if defined?(show_story) && show_story %>
+        <a href="<%= comment.story.comments_url %>"><%= comment.story.title %></a>
+      <% end %>
       <% if defined?(was_merged) && was_merged %>
         <span class="merge"></span>
       <% end %>
@@ -38,6 +39,7 @@ class="border container overall comment <%= comment.current_vote ? (comment.curr
         previewed
         just now
       <% else %>
+      comment by 
         <a href="/u/<%= comment.user.username %>"
         <% if !comment.user.is_active? %>
           class="inactive_user"
@@ -54,7 +56,7 @@ class="border container overall comment <%= comment.current_vote ? (comment.curr
         <%= raw(time_ago_in_words_label(comment.has_been_edited? ?
           comment.updated_at : comment.created_at).gsub(/^about /, "")) %> ago
       <% end %>
-
+      <small>
       <% if !comment.previewing %>
         |
         <a href="<%= comment.url %>#c_<%= comment.short_id %>">link</a>
@@ -87,11 +89,9 @@ class="border container overall comment <%= comment.current_vote ? (comment.curr
           <% end %>
         </span>
       <% end %>
+      </small>
 
-      <% if defined?(show_story) && show_story %>
-        | on:
-        <a href="<%= comment.story.comments_url %>"><%= comment.story.title %></a>
-      <% end %>
+      
     </div>
     <div class="comment_text">
       <% if comment.is_gone? %>

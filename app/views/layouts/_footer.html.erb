@@ -3,8 +3,8 @@
 <footer class="footer">
 <div class="container">
       <span class="pull-right" style="text-align: right">
-      <a href="/moderations" id="footer-color">Moderation</a>
-        |
+      <!--<a href="/moderations" id="footer-color">Moderation</a>
+        |      NEED TO ENABLE MOD ROUTE TO USE-->
         <% if @user && !@user.is_new? &&
         (iqc = InvitationRequest.verified_count) > 0 %>
         <a href="/invitations"id="footer-color">Invitation Queue (<%= iqc %>)</a>

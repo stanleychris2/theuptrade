@@ -10,8 +10,9 @@
     :as => :story %>
 </ol>
 <div class="container">
-<div class="morelink btn btn-default page">
+
   <% if @page && @page > 1 %>
+  <div class="morelink btn btn-default page">
     <a href="<%= @cur_url %><%= @cur_url == "/" ? "" : "/" %><%=
       @page == 2 ? "" : "page/#{@page - 1}" %>" style="color: black">&lt;&lt; Page
       <%= @page - 1 %></a>

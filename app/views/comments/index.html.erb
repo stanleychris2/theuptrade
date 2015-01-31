@@ -6,7 +6,8 @@
     </li>
   <% end %>
 </ol>
-
+<div class="container">
+  <br>
 <div class="morelink btn btn-default">
   <% if @page && @page > 1 %>
     <a href="/comments<%= @page == 2 ? "" : "/page/#{@page - 1}" %>">&lt;&lt; 
@@ -21,4 +22,5 @@
     <a href="/comments/page/<%= @page + 1 %>">Page
       <%= @page + 1 %> &gt;&gt;</a>
   <% end %>
+</div>
 </div>

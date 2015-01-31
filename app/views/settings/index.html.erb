@@ -1,45 +1,63 @@
-<div class="box wide">
-  <div class="legend right">
-    <a href="/u/<%= @user.username %>">View Profile</a>
-  </div>
-  <div class="legend">
-    Account Settings
+<div class="container">
+  <div class="page-header">
+    <h2>Account Settings</h2>
+    <h5><a href="/u/<%= @user.username %>">View Profile</a></h5>
   </div>
 
   <%= form_for @edit_user, :url => settings_url, :method => :post,
   :html => { :id => "edit_user" } do |f| %>
     <%= error_messages_for f.object %>
 
-    <div class="boxline">
+  
+  <div class="form-horizontal">  
+    
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
       <%= f.label :username, "Username:", :class => "required" %>
-      <%= f.text_field :username, :size => 15 %>
-      <span class="hint">
+      </div>
+      <div class="col-sm-7">
+      <%= f.text_field :username, :size => 15, :class => "form-control" %>
+      </div>
+    </div>
+  
+      <!--<span class="hint">
         <tt><%= User.username_regex %></tt>
-      </span>
-    </div>
+      </span>-->
 
-    <div class="boxline">
+
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
       <%= f.label :password, "New Password:", :class => "required" %>
-      <%= f.password_field :password, :size => 40, :autocomplete => "off" %>
+      </div>
+      <div class="col-sm-7">
+        <%= f.password_field :password, :size => 40, :autocomplete => "off", :class => "form-control" %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
+      <%= f.label :password_confirmation, "Confirm Password:", :class => "required" %>
+    </div>
+      <div class="col-sm-7">
+      <%= f.password_field :password_confirmation, :size => 40,:autocomplete => "off", :class => "form-control" %>
+      </div>  
     </div>
 
-    <div class="boxline">
-      <%= f.label :password_confirmation, "Confirm Password:",
-        :class => "required" %>
-      <%= f.password_field :password_confirmation, :size => 40,
-        :autocomplete => "off" %>
-    </div>
-
-    <div class="boxline">
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
       <%= f.label :email, "E-mail Address:", :class => "required" %>
-      <%= f.text_field :email, :size => 40 %>
+      </div>
+
+      <div class="col-sm-7">
+      <%= f.text_field :email, :size => 40, :class => "form-control" %>
       <span class="hint">
         <a href="http://www.gravatar.com/" target="_blank">Gravatar</a>'ized
       </span>
+      </div>
     </div>
 
     <br>
-
+<!--
     <div class="boxline">
       <%= f.label :pushover_user_key,
         raw("<a href=\"https://pushover.net/\">Pushover</a> User Key:"),
@@ -64,12 +82,17 @@
     </div>
 
     <br>
-
-    <div class="boxline">
+-->
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
       <%= f.label :about, "About:", :class => "required" %>
-      <%= f.text_area :about, :size => "100x5", :style => "width: 600px;" %>
+      </div>
+      <div class="col-sm-7">
+      <%= f.text_area :about, :size => "100x5", :style => "width: 100%;", :class => "form-control" %>
+      </div>
     </div>
 
+<!--
     <div class="box">
       <div class="boxline markdown_help_toggler" style="margin-left: 9em;
       width: 600px;">
@@ -82,36 +105,46 @@
         <%= render :partial => "global/markdownhelp" %>
       </div>
     </div>
-
-    <div class="legend">
-      Comment Reply Notification Settings
-    </div>
-
-    <div class="boxline">
-      <%= f.label :email_replies, "Receive E-mail:", :class => "required" %>
+-->
+    <h4 style="
+              border-bottom-style: solid;
+              border-bottom-color: #d2d4d3;
+              border-bottom-width: 1px;
+              padding-bottom: 10px;">
+      Notification Settings
+    </h4>
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
+      <%= f.label :email_replies, "Receive e-mail when someone responts to your comment:", :class => "required", :style => "text-align: left;" %>
+      </div>
+      <div class="col-sm-7">
       <%= f.check_box :email_replies %>
+      </div>
     </div>
-
-    <div class="boxline">
+<!--
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
       <%= f.label :pushover_replies, "Receive Pushover Alert:",
         :class => "required" %>
+      </div>
+      <div class="col-sm-7">
       <%= f.check_box :pushover_replies %>
       <span class="hint">
         Requires user key entered above
       </span>
-    </div>
+      </div>
+     </div> 
+-->
 
-    <br>
-
-    <div class="legend">
-      Comment Mention Notification Settings
-    </div>
-
-    <div class="boxline">
-      <%= f.label :email_mentions, "Receive E-mail:", :class => "required" %>
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
+      <%= f.label :email_mentions, "Receive e-mail when someone mentions you in a comment:", :class => "required" , :style => "text-align: left;" %>
+      </div>
+      <div class="col-sm-7">
       <%= f.check_box :email_mentions %>
+      </div>
     </div>
-
+    <!--
     <div class="boxline">
       <%= f.label :pushover_mentions, "Receive Pushover Alert:",
         :class => "required" %>
@@ -122,16 +155,17 @@
     </div>
 
     <br>
+-->
 
-    <div class="legend">
-      Private Message Notification Settings
-    </div>
 
-    <div class="boxline">
-      <%= f.label :email_messages, "Receive E-mail:", :class => "required" %>
-      <%= f.check_box :email_messages %>
-    </div>
-
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
+        <%= f.label :email_messages, "Receive e-mail when someone sends you an UpTrade message:", :class => "required", :style => "text-align: left;" %>
+      </div>
+      <div class="col-sm-7">
+        <%= f.check_box :email_messages %>
+      </div>
+      <!--
     <div class="boxline">
       <%= f.label :pushover_messages, "Receive Pushover Alert:",
         :class => "required" %>
@@ -139,15 +173,20 @@
       <span class="hint">
         Requires user key entered above
       </span>
+    
+-->
     </div>
-
     <br>
 
-    <div class="legend">
+<h4 style="
+              border-bottom-style: solid;
+              border-bottom-color: #d2d4d3;
+              border-bottom-width: 1px;
+              padding-bottom: 10px;">
       Mailing List Settings
-    </div>
-
-    <p>
+    </h4>
+    <div class="form-group">
+    <div class="col-sm-9">
     When enabled, you will receive all newly submitted stories and comments to
     your e-mail address entered above, except those stories (and their
     comments) filtered by your <a href="/filters">tag filters</a>.  All e-mail
@@ -155,15 +194,20 @@
     which you can filter on, and e-mails you send to that address will be
     posted under your account on this website.  You should keep your unique
     list address private to prevent others from posting comments as you.
-    </p>
+    </div>
+  </div>
 
-    <div class="boxline">
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
       <%= f.label :mailing_list_mode, "Receive List E-mails:",
         :class => "required" %>
+      </div>
+      <div class="col-sm-7">
       <%= f.select :mailing_list_mode, [ [ "No e-mails", 0 ],
         [ "All stories and comments", 1 ], [ "Only stories", 2 ] ] %>
+      </div>
     </div>
-
+<!--
     <div class="boxline">
       <label class="required">List Address:</label>
       <span>
@@ -171,45 +215,59 @@
         @edit_user.mailing_list_token %>@<%= Rails.application.domain %></tt>
       </span>
     </div>
+-->
+    <div class="form-group">
+      <div class="col-sm-9">
+      <%= f.submit "Save All Settings", :class => "btn btn-default pull-right" %>
+      <% end %>
+    </div>
+   </div>
 
-    <br>
-    <%= f.submit "Save All Settings" %>
-  <% end %>
+    <h4 style="
+              border-bottom-style: solid;
+              border-bottom-color: #d2d4d3;
+              border-bottom-width: 1px;
+              padding-bottom: 10px;">
+      Delete Account
+    </h4>
 
-  <br>
-  <br>
 
   <%= form_for @edit_user, :url => delete_account_url, :method => :post,
   :html => { :id => "delete_user" } do |f| %>
-    <div class="legend">
-      Delete Account
-    </div>
 
-    <p>
+
+    <div class="form-group">
+      <div class="col-sm-9">
     To permanently delete your account, verify your current password below.
     Your account will be put into a deleted state, your comments will be marked
     as deleted and no longer readable by any other users, and your private
     messages will be deleted.  Your submitted stories will not be deleted.
     Your username will remain reserved and will not be available to use on any
     other account.
-    </p>
-
-    <div class="boxline">
-      <%= f.label :password, "Verify Password:", :class => "required" %>
-      <%= f.password_field :password, :size => 40, :autocomplete => "off" %>
+      </div>
     </div>
 
+    <div class="form-group">
+      <div class="col-sm-2">
+      <%= f.label :password, "Verify Password:", :class => "required" %>
+      </div>
+      <div class="col-sm-4">
+      <%= f.password_field :password, :size => 40, :autocomplete => "off", :class => "form-control" %>
+      </div>
+      <div class="col-sm-3">
+      <%= f.submit "Yes, Delete My Account", :class => "btn btn-default pull-right" %>
+      <% end %>
+      </div>
+    </div>
     <br>
-    <%= f.submit "Yes, Delete My Account" %>
-  <% end %>
 
-  <br>
-  <br>
-
-  <a name="invite"></a>
-  <div class="legend">
-    Invite a New User
-  </div>
-
+    <h4 style="
+              border-bottom-style: solid;
+              border-bottom-color: #d2d4d3;
+              border-bottom-width: 1px;
+              padding-bottom: 10px;">
+      Invite a New User
+    </h4>
   <%= render :partial => "users/invitationform" %>
+</div>
 </div>

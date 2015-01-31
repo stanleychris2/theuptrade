@@ -3,7 +3,10 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
 "downvoted" : "" %> <%= story.vote == 0 ? "hidden" : "" %> <%= story.is_expired? ?
 "expired" : "" %>   ">
 
+
+
 <div class="container border">
+
   <div class="row overall">
     <div class="voters col-xs-1">
       <% if @user %>

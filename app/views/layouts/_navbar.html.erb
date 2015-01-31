@@ -21,12 +21,7 @@
         
         <% links.merge!({ "/search" => "Search" }) %>
         
-        <% if @cur_url.present? && !links.keys.include?(@cur_url) &&
-        @heading.present? %>
-          <span id="headertitle">
-            <a href="<%= @cur_url %>"><%= @heading %></a>
-          </span>
-        <% end %>
+
 
 <!-- This is where I am putting the navbar html/css... responsive etc all that good stuff -->
     <div class="navbar-collapse collapse navbar-responsive-collapse">
@@ -71,6 +66,13 @@
           </ul>  
     </div>
   </div>
+
+          <% if @cur_url.present? && !links.keys.include?(@cur_url) &&
+        @heading.present? %>
+          <div class="container">
+            <h3>Showing Stories Tagged with<a href="<%= @cur_url %>" > <%= @heading %> </a></h3>
+          </div>
+        <% end %>
 <!--
     <div id="inside">
       <% if flash[:error] %>

@@ -15,7 +15,8 @@
   <div class="container overall"><strong>Post a Comment</strong>
     <%= text_area_tag "comment", comment.comment, :rows => 5,
       :style => "width: 100%;", :autocomplete => "off", :disabled => !@user,
-      :placeholder => (@user ? "" : "You must be logged in to leave a comment.")
+      :placeholder => (@user ? "" : "You must be logged in to leave a comment."),
+      :class => "form-control"
       %>
 
     <p></p>
@@ -32,14 +33,14 @@
       <% end %>
 -->
       <%= button_tag "#{comment.new_record?? "Post" : "Update"}",
-        :class => "comment-post", :type => "button",
+        :class => "comment-post btn btn-default", :type => "button",
         :disabled => !@user %>
       &nbsp;
-      <%= button_tag "Preview", :class => "comment-preview",
+      <%= button_tag "Preview", :class => "comment-preview btn btn-default",
         :type => "button", :disabled => !@user %>
       <% if local_assigns[:cancellable] %>
         &nbsp;
-        <%= button_tag "Cancel", :class => "comment-cancel",
+        <%= button_tag "Cancel", :class => "comment-cancel btn btn-default",
           :type => "button" %>
       <% end %>
 

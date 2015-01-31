@@ -918,6 +918,7 @@ textarea {
 a {
   color: #67b15e;
   text-decoration: none;
+  cursor: pointer;
 }
 a:hover,
 a:focus {
@@ -1216,7 +1217,7 @@ a.bg-danger:hover {
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #d2d4d3;
 }
 ul,
 ol {
@@ -2327,6 +2328,8 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
   line-height: normal;
+  width: 20px;
+  height: 20px;
 }
 input[type="file"] {
   display: block;

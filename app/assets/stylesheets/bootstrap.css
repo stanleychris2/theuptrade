@@ -916,13 +916,17 @@ textarea {
   padding: 6px;
 }
 a {
-  color: #67b15e;
+  color: #27ae60;
   text-decoration: none;
   cursor: pointer;
+    -webkit-transition:width .25s, height .25s, background-color .25s, -webkit-transform .25s;
+    transition:width .25s, height .25s, background-color .25s, transform .25s;  
 }
 a:hover,
 a:focus {
   color: #000000;
+      -webkit-transition:width .25s, height .25s, background-color .25s, -webkit-transform .25s;
+      transition:width .25s, height .25s, background-color .25s, transform .25s;
 }
 a:focus {
   outline: thin dotted;
@@ -2769,8 +2773,6 @@ select[multiple].form-group-lg .form-control {
       -ms-user-select: none;
           user-select: none;
   background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
 }
 .btn:focus,
 .btn:active:focus,
@@ -3653,11 +3655,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   display: block;
   padding: 10px 15px;
+  border-bottom-style: solid;
+  border-bottom-color: #2c3e50;
+  border-bottom-width: 1px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
   background-color: #eee;
+  border-bottom-style: solid;
+  border-bottom-color: white;
+  border-bottom-width: 1px;
 }
 .nav > li.disabled > a {
   color: #777;
@@ -4165,7 +4173,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #252526;
+  background-color: #373737;
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -4179,8 +4187,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
-  padding-bottom: 5px;
+  color: #fff;
+  padding-bottom: 10px;
   padding-top: 25px;
   font-size: 14px;
   font-weight: 200;

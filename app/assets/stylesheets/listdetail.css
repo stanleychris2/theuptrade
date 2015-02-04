@@ -67,8 +67,8 @@ body{
 }
 
 .tagbutton:hover{
-  background:#464646;
-  color: white;
+  background: #ecf0f1;
+  color: black;
 }
 .tagbutton {
   font-size: 12px;
@@ -78,9 +78,9 @@ body{
   padding-right: 6px;
   padding-left: 6px;
   margin-right: 2px;
-  background-color:#d4d5d6;
-  color: #313131;
-  border-radius: 2px;
+  background-color:#373737;
+  color: #ffffff;
+  border-radius: 0px;
     -webkit-transition:width .25s, height .25s, background-color .25s, -webkit-transform .25s;
     transition:width .25s, height .25s, background-color .25s, transform .25s;
 

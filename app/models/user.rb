@@ -19,14 +19,6 @@ class User < ActiveRecord::Base
   belongs_to :banned_by_user,
     :class_name => "User"
   has_many :invitations
-  has_many :votes
-  has_many :voted_stories, -> { where('votes.comment_id' => nil) },
-    :through => :votes,
-    :source => :story
-  has_many :upvoted_stories,
-    -> { where('votes.comment_id' => nil, 'votes.vote' => 1) },
-    :through => :votes,
-    :source => :story
 
   has_secure_password
 
@@ -35,8 +27,7 @@ class User < ActiveRecord::Base
 
   validates :password, :presence => true, :on => :create
 
-  validates :username,
-    :format => { :with => /\A[A-Za-z0-9][A-Za-z0-9_-]{0,24}\Z/ },
+  validates :username, :format => { :with => /\A[A-Za-z0-9][A-Za-z0-9_-]*\Z/ },
     :uniqueness => { :case_sensitive => false }
 
   validates_each :username do |record,attr,value|
@@ -63,12 +54,6 @@ class User < ActiveRecord::Base
       u.karma = u.stories.map(&:score).sum + u.comments.map(&:score).sum
       u.save!
     end
-  end
-
-  def self.username_regex
-    User.validators_on(:username).select{|v|
-      v.class == ActiveModel::Validations::FormatValidator }.first.
-      options[:with].inspect
   end
 
   def as_json(options = {})
@@ -182,7 +167,7 @@ class User < ActiveRecord::Base
   end
 
   def initiate_password_reset_for_ip(ip)
-    self.password_reset_token = "#{Time.now.to_i}-#{Utils.random_str(30)}"
+    self.password_reset_token = Utils.random_str(40)
     self.save!
 
     PasswordReset.password_reset_link(self, ip).deliver

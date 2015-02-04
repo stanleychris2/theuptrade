@@ -18,6 +18,9 @@ var _Lobsters = Class.extend({
   upvoteStory: function(voterEl) {
     Lobsters.vote("story", voterEl, 1);
   },
+  downvoteStory: function(voterEl) {
+    Lobsters.vote("story", voterEl, -1);
+  },
   flagStory: function(voterEl) {
     Lobsters._showDownvoteWhyAt("story", voterEl, function(k) {
       Lobsters.vote("story", voterEl, -1, k); });
@@ -47,8 +50,7 @@ var _Lobsters = Class.extend({
     Lobsters.vote("comment", voterEl, 1);
   },
   downvoteComment: function(voterEl) {
-    Lobsters._showDownvoteWhyAt("comment", voterEl, function(k) {
-      Lobsters.vote("comment", voterEl, -1, k); });
+    Lobsters.vote("comment", voterEl, -1);
   },
   _showDownvoteWhyAt: function(thingType, voterEl, onChooseWhy) {
     if (!Lobsters.curUser)
@@ -278,6 +280,10 @@ $(document).ready(function() {
   });
   $("li.story a.upvoter").click(function() {
     Lobsters.upvoteStory(this);
+    return false;
+  });
+    $("li.story a.downvoter").click(function() {
+    Lobsters.downvoteStory(this);
     return false;
   });
   $("li.story a.hider").click(function() {

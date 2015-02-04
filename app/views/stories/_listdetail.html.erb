@@ -13,7 +13,7 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
         <!---<a class="upvoter btn uvote"></a>-->
         <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
         <div class="score text-center"><%= story.score %></div>
-        <a class="downvoter btn btn-default down"><div class="arrow-down"></div></a>
+        <a class="downvoter downvoter_stub btn btn-default down"><div class="arrow-down"></div></a>
       <% else %>
 
         <a class= "btn btn-default up" href="/login"><div class="arrow-up"></div></a>

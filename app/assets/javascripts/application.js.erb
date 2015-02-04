@@ -50,7 +50,8 @@ var _Lobsters = Class.extend({
     Lobsters.vote("comment", voterEl, 1);
   },
   downvoteComment: function(voterEl) {
-    Lobsters.vote("comment", voterEl, -1);
+    Lobsters._showDownvoteWhyAt("comment", voterEl, function(k) {
+      Lobsters.vote("comment", voterEl, -1, k); });
   },
   _showDownvoteWhyAt: function(thingType, voterEl, onChooseWhy) {
     if (!Lobsters.curUser)

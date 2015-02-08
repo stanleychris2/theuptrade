@@ -62,6 +62,8 @@ class Story < ActiveRecord::Base
     check_tags
   end
 
+
+
   def self.find_similar_by_url(url)
     urls = [ url.to_s ]
     urls2 = [ url.to_s ]
@@ -133,15 +135,17 @@ class Story < ActiveRecord::Base
 
   def calculated_hotness
     base = 10
-    self.tags.select{|t| t.hotness_mod != 0 }.each do |t|
-      base -= t.hotness_mod
-    end
+
+    #self.tags.select{|t| t.hotness_mod != 0 }.each do |t|
+     # base -= t.hotness_mod
+    #end
 
     # prevent the submitter's own comments from affecting the score
-    ccount = self.comments.where("user_id != ?", self.user_id).count
+    ccount = self.comments.count
 
     # don't immediately kill stories at 0 by bumping up score by one
-    order = Math.log([ (score + 1).abs + ccount, 1 ].max, base)
+    #order = Math.log([ (score + 1).abs + ccount, 1 ].max, base)
+    order = (score + 1).abs + ccount
     if score > 0
       sign = 1
     elsif score < 0
@@ -153,7 +157,7 @@ class Story < ActiveRecord::Base
     # TODO: as the site grows, shrink this down to 12 or so.
     window = 60 * 60 * 24
 
-    return -((order * sign) + (self.created_at.to_f / window)).round(7)
+    return order #-((order * sign) + (self.created_at.to_f / window)).round(7)
   end
 
   def can_be_seen_by_user?(user)
@@ -258,11 +262,12 @@ class Story < ActiveRecord::Base
       :vote => 0).count
   end
 
+#hard-codeing story is always downvoteable 
   def is_downvotable?
-    if self.created_at
-      Time.now - self.created_at <= DOWNVOTABLE_DAYS.days
+    if 1 > 0 
+      true
     else
-      false
+      true
     end
   end
 
@@ -325,7 +330,7 @@ class Story < ActiveRecord::Base
         else
           "changed #{k} from #{v[0].inspect} to #{v[1].inspect}"
         end
-      }.join(", ")
+      }.join(", ")      
     end
 
     m.reason = self.moderation_reason

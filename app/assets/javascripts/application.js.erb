@@ -21,10 +21,17 @@ var _Lobsters = Class.extend({
   downvoteStory: function(voterEl) {
     Lobsters.vote("story", voterEl, -1);
   },
+/*
   flagStory: function(voterEl) {
     Lobsters._showDownvoteWhyAt("story", voterEl, function(k) {
-      Lobsters.vote("story", voterEl, -1, k); });
+      Lobsters.vote("story", voterEl, 0, k); });
   },
+*/
+  flagStory: function(voterEl) {
+    Lobsters.flagIt("story", voterEl, function(k) {
+      Lobsters.vote("story", voterEl, 0, k); });
+  },
+
   hideStory: function(hiderEl) {
     if (!Lobsters.curUser)
       return Lobsters.bounceToLogin();
@@ -50,10 +57,9 @@ var _Lobsters = Class.extend({
     Lobsters.vote("comment", voterEl, 1);
   },
   downvoteComment: function(voterEl) {
-    Lobsters._showDownvoteWhyAt("comment", voterEl, function(k) {
-      Lobsters.vote("comment", voterEl, -1, k); });
+    Lobsters.vote("comment", voterEl, -1);
   },
-  _showDownvoteWhyAt: function(thingType, voterEl, onChooseWhy) {
+  flagIt: function(thingType, voterEl, onChooseWhy) {
     if (!Lobsters.curUser)
       return Lobsters.bounceToLogin();
 
@@ -115,7 +121,7 @@ var _Lobsters = Class.extend({
     if (thingType == "story")
       d.css("left", $(voterEl).position().left);
   },
-
+//   Lobsters.vote("story", voterEl, -1);
   vote: function(thingType, voterEl, point, reason) {
     if (!Lobsters.curUser)
       return Lobsters.bounceToLogin();
@@ -131,12 +137,14 @@ var _Lobsters = Class.extend({
       score--;
       action = "unvote";
     }
+
     else if (li.hasClass("downvoted") && point < 0) {
       /* already downvoted, neutralize */
       li.removeClass("downvoted");
       score++;
       action = "unvote";
     }
+
     else if (point > 0) {
       if (li.hasClass("downvoted"))
         /* flip flop */
@@ -146,6 +154,7 @@ var _Lobsters = Class.extend({
       score++;
       action = "upvote";
     }
+
     else if (point < 0) {
       if (li.hasClass("upvoted"))
         /* flip flop */
@@ -164,15 +173,16 @@ var _Lobsters = Class.extend({
       if (action == "unvote" && thingType == "story" && point < 0)
         li.find(".flagger").text("flag");
     }
-    else if (action == "downvote" && thingType == "comment")
-      li.find(".reason").html("| " +
-        Lobsters.commentDownvoteReasons[reason].toLowerCase());
+/*    else if (action == "downvote" && thingType == "comment")
+     li.find(".reason").html("| " +
+        Lobsters.commentDownvoteReasons[reason].toLowerCase());*/
     else if (action == "downvote" && thingType == "story")
-      li.find(".flagger").text("unflag");
+      li.find(".flagger").text("flag"); //got rid of unflag
 
     $.post("/" + (thingType == "story" ? "stories" : thingType + "s") + "/" +
       li.attr("data-shortid") + "/" +
       action, { reason: reason });
+
   },
 
   postComment: function(form) {

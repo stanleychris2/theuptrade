@@ -1,5 +1,5 @@
 <li id="story_<%= story.short_id %>" data-shortid="<%= story.short_id %>"
-class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
+class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 "downvoted" : "" %> <%= story.vote == 0 ? "hidden" : "" %> <%= story.is_expired? ?
 "expired" : "" %>   ">
 
@@ -8,12 +8,12 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
 <div class="container border">
 
   <div class="row overall">
-    <div class="voters col-xs-1">
+    <div class="voters col-xs-1 ">
       <% if @user %>
         <!---<a class="upvoter btn uvote"></a>-->
         <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
         <div class="score text-center"><%= story.score %></div>
-        <a class="downvoter downvoter_stub btn btn-default down"><div class="arrow-down"></div></a>
+        <a class="downvoter btn btn-default down"><div class="arrow-down"></div></a>
       <% else %>
 
         <a class= "btn btn-default up" href="/login"><div class="arrow-up"></div></a>
@@ -67,7 +67,7 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
         <% end %>
         <% if !story.is_gone? && @user %>
           <% if @user && @user.can_downvote?(story) %>
-            | <a class="flagger">flag</a>
+           <!--| <a class="flagger">flag</a> -->
           <% end %>
           <% if story.vote == 0 %>
             | <%= link_to "unhide", story_unhide_url(story.short_id),
@@ -80,12 +80,12 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
             (hidden by <%= pluralize(story.hider_count, "user") %>)
           <% end %>
         <% end %>
-        <div class="row comments_label">
+        <div class="row comments_label"> 
         <% if !story.is_gone? && (@user || story.comments_count > 0) %>
         
           <!--- feeds to story line 190-->
           
-
+            <img src="https://s3.amazonaws.com/theuptrade/images/comments.svg"></img>
             <a href="<%= story.comments_url %>"><%= story.comments_count == 0 ?
               "Start the dicussion" : "#{story.comments_count} comment" <<
               (story.comments_count == 1 ? "" : "s") %></a>
@@ -114,10 +114,9 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
             title="<%= tagging.tag.description %>"><%= tagging.tag.tag %></a>
         <% end %>
       </h5>
-      <span class="pull-right"
+      <span class="pull-right">
       <h6><%= story.domain %></h6>
       </span>
-
       <% if defined?(single_story) && single_story %>
         <% story.merged_stories.each do |ms| %>
           <br>
@@ -134,17 +133,12 @@ class=" table-striped story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vo
             <% end %>
           </span>
           <span class="domain"><%= ms.domain %></span>
+
         <% end %>
       <% end %>
     <% end %>
   </div>
 </div>
 
-<!--
-<div class="mobile_comments <%= story.comments_count == 0 ? "zero" : "" %>"
-style="display: none;">
-  <a href="<%= story.comments_url %>"><%= story.comments_count %></a>
-</div>
--->
 
 </li>

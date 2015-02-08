@@ -157,9 +157,9 @@ class CommentsController < ApplicationController
       return render :text => "can't find comment", :status => 400
     end
 
-    if !Vote::COMMENT_REASONS[params[:reason]]
-      return render :text => "invalid reason", :status => 400
-    end
+#    if !Vote::COMMENT_REASONS[params[:reason]]
+#      return render :text => "invalid reason", :status => 400
+#    end
 
     if !@user.can_downvote?(comment)
       return render :text => "not permitted to downvote", :status => 400

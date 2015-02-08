@@ -101,7 +101,7 @@ class User < ActiveRecord::Base
 
   def can_downvote?(obj)
     if is_new?
-      return false
+      return true #making new users able to downvote
     elsif obj.is_a?(Story)
       if obj.is_downvotable?
         return true

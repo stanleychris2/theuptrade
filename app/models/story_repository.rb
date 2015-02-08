@@ -96,18 +96,19 @@ private
   end
 
   def filter_downvoted_and_tags(scope)
-    if @user
-      scope = filter_downvoted scope
-    end
+    #if @user
+    #  scope = filter_downvoted scope
+    #end
     if @params[:exclude_tags].try(:any?)
       scope = filter_tags scope, @params[:exclude_tags]
     end
     scope
   end
 
-  def filter_downvoted(scope)
-    scope.where(Story.arel_table[:id].not_in(hidden_arel))
-  end
+#removed filter downvoted
+  #def filter_downvoted(scope)
+  #  scope.where(Story.arel_table[:id].not_in(hidden_arel))
+  #end
 
   def hidden_arel
     if @user

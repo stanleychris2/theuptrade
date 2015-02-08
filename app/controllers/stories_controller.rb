@@ -19,7 +19,8 @@ class StoriesController < ApplicationController
       if @story.save
         Countinual.count!("#{Rails.application.shortname}.stories.submitted",
           "+1")
-
+        @story.tweet
+        
         return redirect_to @story.comments_url
       end
     end
@@ -206,13 +207,9 @@ class StoriesController < ApplicationController
       return render :text => "can't find story", :status => 400
     end
 
-    if !Vote::STORY_REASONS[params[:reason]]
-      return render :text => "invalid reason", :status => 400
-    end
-
-    if !@user.can_downvote?(story)
-      return render :text => "not permitted to downvote", :status => 400
-    end
+#    if !Vote::STORY_REASONS[params[:reason]]
+#      return render :text => "invalid reason", :status => 500
+#    end
 
     Vote.vote_thusly_on_story_or_comment_for_user_because(-1, story.id,
       nil, @user.id, params[:reason])

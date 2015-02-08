@@ -2,10 +2,10 @@ class Twitter
   cattr_accessor :CONSUMER_KEY, :CONSUMER_SECRET, :AUTH_TOKEN, :AUTH_SECRET
 
   # these need to be overridden in config/initializers/production.rb
-  @@CONSUMER_KEY = nil
-  @@CONSUMER_SECRET = nil
-  @@AUTH_TOKEN = nil
-  @@AUTH_SECRET = nil
+  @@CONSUMER_KEY = FepOQLwp0eTMxxjLJ6SCOSASN
+  @@CONSUMER_SECRET = OmhAeJ8OreUrNtDvFUucKCWcI0FiclMoFBkylQQC1zLn3PINDF
+  @@AUTH_TOKEN = 2913829005-B6hFOx1ZB5oGFMPIgO213cgtE4yDWAyUa22LJKV
+  @@AUTH_SECRET = BjpyGh5X3SxOWcu52LIKPZSuwv9hgYl539j2c9lk9VU3s
 
   MAX_TWEET_LEN = 140
 

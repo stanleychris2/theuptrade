@@ -10,7 +10,6 @@
 <div class="container">
   <div class="col-md-9 border">
     <h3>Messages
-
     <% if @direction == :out %>
       Sent
     <% end %>
@@ -19,9 +18,14 @@
     <% else %>
       <a href="/messages/sent" class="btn btn-default pull-right">View Sent</a>
     <% end %>
-  </h3>
+    </h3>
+
   </div>
-<br>
+
+  <br><br><br>
+
+
+  <div class="col-md-9">
   <% if @messages.any? %>
     <%= form_tag batch_delete_messages_url do %>
       <table class="data zebra" width="100%" cellspacing=0>
@@ -49,17 +53,19 @@
       <% end %>
       </table>
       <br>      
-      <div class="col-md-9">
+     
       <%= submit_tag "Delete Selected", :class => "btn btn-default"%>
       
     <% end %>
-  <% else %>
+ <% else %>
       You do not have any <%= @direction == :in ? "" : "sent" %> private
       messages.
     
   <% end %>
-</div>
-  <br><br><br><br>
+
+   <br><br><br>
+
+  </div>
 <div class="col-md-9 border">
   <h3>
     Compose Message
@@ -71,6 +77,7 @@
     <%= form_for @new_message, :method => :post do |f| %>
     <%= error_messages_for @new_message %>
     <div class="row">
+      <br><br>
     <div class="col-md-9">
       <%= f.label :recipient_username, "To:", :class => "required" %>
       <%= f.text_field :recipient_username, :size => 20,

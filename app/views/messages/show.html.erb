@@ -1,5 +1,5 @@
-<div class="box wide">
-  <div class="legend" style="float: right;">
+<div class="container">
+  <div class="col-md-9" >
     <% if @message.author_user_id == @user.id %>
       <a href="/messages/sent">Back to Sent Messages</a>
     <% else %>
@@ -7,11 +7,11 @@
     <% end %>
   </div>
 
-  <div class="legend">
-    <%= @message.subject %>
-
-    <div class="sublegend">
-      Sent from <a href="/u/<%= @message.author.username %>"><%=
+  <div class="col-md-9">
+    <strong>Subject:</strong> <%= @message.subject %>
+  </div>
+  <div class="col-md-9 border" style="margin-top: 0px;">
+      <strong>From:</strong> <a href="/u/<%= @message.author.username %>"><%=
         @message.author.username %></a>
       <% if @message.author.is_admin? %>
         (administrator)
@@ -21,38 +21,38 @@
       to
       <a href="/u/<%= @message.recipient.username %>"><%=
         @message.recipient.username %></a>
-      <%= raw(time_ago_in_words_label(@message.created_at)) %> ago
+      <%= @message.created_at.strftime("at %I:%M%p on %m/%d/%Y") %>
     </div>
-  </div>
+  
 
-  <div class="boxline comment_text">
-    <%= raw @message.linkified_body %>
+  <div class="col-md-9">
+    <h6><%= raw @message.linkified_body %></h6>
   </div>
 
   <br>
 
-  <div class="boxline">
+  <div class="col-md-9">
     <div style="float: left;">
       <%= form_tag message_url(@message.short_id), :method => :delete do %>
-        <%= submit_tag "Delete Message" %>
+        <%= submit_tag "Delete Message", :class => "btn btn-default" %>
       <% end %>
     </div>
 
     <div style="float: left; padding-left: 1em;">
       <%= form_tag message_url(@message.short_id) + "/keep_as_new",
       :method => :post do %>
-        <%= submit_tag "Keep As New" %>
+        <%= submit_tag "Keep As New", :class => "btn btn-default" %>
       <% end %>
     </div>
   </div>
 
   <div style="clear: both;"></div>
 
-  <br>
+  <br><br><br><br><br><br><br>
 
-  <div class="legend">
+  <h4>
     Compose Reply To <%= @new_message.recipient_username %>
-  </div>
+  </h4>
 
   <%= form_for @new_message, :method => :post do |f| %>
     <%= f.hidden_field :recipient_username %>
@@ -61,17 +61,17 @@
 
     <div class="boxline">
       <%= f.text_field :subject, :style => "width: 500px;",
-        :autocomplete => "off" %>
+        :autocomplete => "off", :class => "form-control" %>
     </div>
 
     <div class="boxline">
       <%= f.text_area :body, :style => "width: 500px;", :rows => 5,
-        :autocomplete => "off" %>
+        :autocomplete => "off", :class => "form-control" %>
     </div>
 
     <div class="boxline">
       <p></p>
-      <%= submit_tag "Send Message" %>
+      <%= submit_tag "Send Message", :class => "btn btn-default" %>
     </div>
   <% end %>
 </div>

@@ -49,6 +49,12 @@ class User < ActiveRecord::Base
   # days old accounts are considered new for
   NEW_USER_DAYS = 7
 
+  def self.username_regex
+    User.validators_on(:username).select{|v|
+      v.class == ActiveModel::Validations::FormatValidator }.first.
+      options[:with].inspect
+  end
+
   def self.recalculate_all_karmas!
     User.all.each do |u|
       u.karma = u.stories.map(&:score).sum + u.comments.map(&:score).sum

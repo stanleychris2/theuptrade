@@ -1,6 +1,10 @@
 class SignupController < ApplicationController
   before_filter :require_logged_in_user, :only => :invite
 
+  def beta
+    @beta_signup = User.new
+  end
+
   def index
     if @user
       flash[:error] = "You are already signed up."

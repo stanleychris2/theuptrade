@@ -35,6 +35,8 @@ Lobsters::Application.routes.draw do
     post "/login" => "login#login"
     post "/logout" => "login#logout"
 
+    get "/beta" => "signup#beta"
+
     get "/signup" => "signup#index"
     post "/signup" => "signup#signup"
     get "/signup/invite" => "signup#invite"

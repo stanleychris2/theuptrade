@@ -1,0 +1,6 @@
+<h1>users new</h1>
+
+<%= form_for(@user) do |f| %>
+	<%= f.label :username, "Username:", :class => "required" %>
+    <%= f.text_field :username, :size => 30 %>
+<% end %>

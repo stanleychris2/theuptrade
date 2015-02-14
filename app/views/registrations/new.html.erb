@@ -3,11 +3,8 @@
     Create an Account
   </div>
 
-  <%= form_for @new_user, { :url => signup_url,
-  :autocomplete => "off" } do |f| %>
-    <%= hidden_field_tag "invitation_code", @invitation.code %>
-
-
+  <%= form_for @user, url: registrations_path do |f| %>
+  <%= f.hidden_field :invitation_code %>
 
     <p>
     To create a new account, enter your e-mail address and a password.
@@ -15,16 +12,7 @@
     if you need to reset your password, or to receive optional new-message
     alerts.  Your username can be changed later.
     </p>
-
-    <%= error_messages_for(@new_user) %>
-
-    <p>
-    <%= f.label :invitation, "Invited By:", :class => "required" %>
-    <span class="d">
-      <a href="/u/<%= @invitation.user.username %>" target="_blank"><%=
-        @invitation.user.username %></a>
-    </span>
-    </p>
+  
 
     <p>
     <%= f.label :username, "Username:", :class => "required" %>
@@ -77,7 +65,7 @@
     </div>
 
     <p>
-    <%= submit_tag "Signup" %>
+    <%= f.submit "Signup" %>
     </p>
   <% end %>
 </div>

@@ -37,10 +37,15 @@ class User < ActiveRecord::Base
   end
 
   before_save :check_session_token
+
+  before_create :save_referral
+
   before_validation :on => :create do
     self.create_rss_token
     self.create_mailing_list_token
   end
+
+  attr_accessor :invitation_code
 
   BANNED_USERNAMES = [ "admin", "administrator", "hostmaster", "mailer-daemon",
     "postmaster", "root", "security", "support", "webmaster", "moderator",
@@ -48,6 +53,7 @@ class User < ActiveRecord::Base
 
   # days old accounts are considered new for
   NEW_USER_DAYS = 7
+
 
   def self.username_regex
     User.validators_on(:username).select{|v|
@@ -60,6 +66,23 @@ class User < ActiveRecord::Base
       u.karma = u.stories.map(&:score).sum + u.comments.map(&:score).sum
       u.save!
     end
+  end
+
+# #setter
+#   def invitation_code=(code)
+#     #only exists so we can bind to form
+#     @invitation_code = code
+#   end
+
+# #getter
+#   def invitation_code
+#     @invitation_code
+#   end
+
+  def save_referral
+    return if invitation_code.blank?
+    invitation = Invitation.find_by_code(invitation_code)
+    self.invited_by_user = invitation.user 
   end
 
   def as_json(options = {})
@@ -188,6 +211,7 @@ class User < ActiveRecord::Base
   end
 
   def is_new?
+    return true if new_record? #no created_at
     Time.now - self.created_at <= NEW_USER_DAYS.days
   end
 

@@ -4,6 +4,8 @@ class UsersController < ApplicationController
     @title = "User #{@showing_user.username}"
   end
 
+def new 
+
   def tree
     @title = "Users"
 

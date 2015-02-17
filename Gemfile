@@ -9,6 +9,7 @@ gem "mysql2", ">= 0.3.14"
 
 # uncomment to use PostgreSQL
 gem "pg"
+gem "puma"
 
 # NOTE: If you use PostgreSQL, you must still leave enabled the above mysql2
 # gem for Sphinx full text search to function.

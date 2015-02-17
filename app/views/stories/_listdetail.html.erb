@@ -3,8 +3,6 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 "downvoted" : "" %> <%= story.vote == 0 ? "hidden" : "" %> <%= story.is_expired? ?
 "expired" : "" %>   ">
 
-
-
 <div class="container border">
 
   <div class="row overall">
@@ -15,10 +13,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
         <div class="score text-center"><%= story.score %></div>
         <a class="downvoter btn btn-default down"><div class="arrow-down"></div></a>
       <% else %>
-
         <a class= "btn btn-default up" href="/login"><div class="arrow-up"></div></a>
-
-
         <div class="score text-center"><%= story.score %></div>
         <a class= "btn btn-default down" href="/login"><div class="arrow-down"></div></a>
       <% end %>

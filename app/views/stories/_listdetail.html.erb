@@ -30,11 +30,9 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
       <% end %>
       </h4>
 
-      <h6>
-      <div class="col-xs-1 number", style="font-size: xx-large;">
-        100
-      </div>
-      <div class="col-xs-7"
+      
+      <div class="col-xs-7" style="padding-left: 0px;">
+        <h6>
       <% if story.previewing %>
         by <a><%= story.user.username %></a>
         just now

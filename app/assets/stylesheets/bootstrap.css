@@ -916,7 +916,7 @@ textarea {
   padding: 6px;
 }
 a {
-  color: #27ae60;
+  color: #427bff;
   text-decoration: none;
   cursor: pointer;
     -webkit-transition:width .25s, height .25s, background-color .25s, -webkit-transform .25s;
@@ -3656,17 +3656,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   display: block;
   padding: 10px 15px;
-  border-bottom-style: solid;
-  border-bottom-color: #2c3e50;
-  border-bottom-width: 1px;
+
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eee;
-  border-bottom-style: solid;
-  border-bottom-color: white;
-  border-bottom-width: 1px;
+  background-color: #cccccc;
 }
 .nav > li.disabled > a {
   color: #777;
@@ -4174,7 +4169,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #2a2a2a;
+  background-color: #ffffff;
+  border-bottom: black;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -4188,7 +4186,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #fff;
+  color: #427bff;
   padding-bottom: 10px;
   padding-top: 25px;
   font-size: 14px;
@@ -4197,7 +4195,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #ffffff;
+  color: #555555;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,

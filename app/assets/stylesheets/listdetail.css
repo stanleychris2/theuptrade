@@ -222,7 +222,10 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 50px;
-  background-color: #252526;
+  background-color: black;
+  border-top: black;
+  border-width: thin;
+  border-style: solid;
 }
 
 .footer .container{

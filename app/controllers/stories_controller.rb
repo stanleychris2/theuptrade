@@ -19,7 +19,7 @@ class StoriesController < ApplicationController
       if @story.save
         Countinual.count!("#{Rails.application.shortname}.stories.submitted",
           "+1")
-        
+        `#{Rails.root}/script/post_to_twitter #{@story.id}`
 
         return redirect_to @story.comments_url
       end

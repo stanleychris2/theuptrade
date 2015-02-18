@@ -40,7 +40,9 @@
               raw("class=\"cur_url\"") : "" %>>Filters</a>
             </li>
             <li>
-              <% if @user %>
+
+              <% if signed_in? %>
+
               <% if (count = @user.unread_message_count) > 0 %>
               <a href="/messages" class="new_messages <%= @cur_url == "/messages" ?
               "cur_url" : "" %>"><%= count %> New Message<%= count == 1 ? "" :

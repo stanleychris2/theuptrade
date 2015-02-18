@@ -32,7 +32,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 
       
       <div class="col-xs-7" style="padding-left: 0px;">
-        <h6>
+        <span>
       <% if story.previewing %>
         by <a><%= story.user.username %></a>
         just now
@@ -100,7 +100,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
         <% end %>
       <% end %>
     </div>
-      </h6>
+      </span>
     </div>
 
   <div class="col-xs-1 pull-right">
@@ -114,7 +114,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
         <% end %>
       </h5>
       <span class="pull-right">
-      <h6><%= story.domain %></h6>
+      <span><%= story.domain %></span>
       </span>
       <% if defined?(single_story) && single_story %>
         <% story.merged_stories.each do |ms| %>

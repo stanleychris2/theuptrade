@@ -257,6 +257,10 @@ class Story < ActiveRecord::Base
       "hotness = '#{self.calculated_hotness}' WHERE id = #{self.id.to_i}")
   end
 
+  def sorted_taggings
+    self.taggings.sort_by{|t| t.tag.tag }.sort_by{|t| t.tag.is_media?? -1 : 0 }
+  end
+
   def hider_count
     @hider_count ||= Vote.where(:story_id => self.id, :comment_id => nil,
       :vote => 0).count

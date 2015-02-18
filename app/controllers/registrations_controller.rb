@@ -7,7 +7,12 @@ class RegistrationsController < ApplicationController
 
 	def create
     if new_user(user_params).save
-      redirect_to :root
+      session[:u] = @user.session_token
+      flash[:success] = "Welcome to #{Rails.application.name}, " <<
+        "#{@user.username}!"
+
+      Countinual.count!("#{Rails.application.shortname}.users.created", "+1")
+      return redirect_to "/signup/invite"
     else 
       render :new 
     end

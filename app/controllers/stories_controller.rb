@@ -244,7 +244,7 @@ private
   def story_params
     p = params.require(:story).permit(
       :title, :url, :description, :moderation_reason, :seen_previous,
-      :tags_a => [],
+      :new_tags
     )
 
     if @user.is_moderator?

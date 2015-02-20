@@ -34,6 +34,8 @@ class Story < ActiveRecord::Base
     :seen_previous
   attr_accessor :editor, :moderation_reason, :merge_story_short_id
 
+  attr_reader :new_tags
+
   before_validation :assign_short_id_and_upvote,
     :on => :create
   before_save :log_moderation
@@ -266,9 +268,9 @@ class Story < ActiveRecord::Base
       :vote => 0).count
   end
 
-#hard-codeing story is always downvoteable 
+#hard-codeing story is always downvoteable
   def is_downvotable?
-    if 1 > 0 
+    if 1 > 0
       true
     else
       true
@@ -334,7 +336,7 @@ class Story < ActiveRecord::Base
         else
           "changed #{k} from #{v[0].inspect} to #{v[1].inspect}"
         end
-      }.join(", ")      
+      }.join(", ")
     end
 
     m.reason = self.moderation_reason
@@ -402,23 +404,20 @@ class Story < ActiveRecord::Base
     @_tags_a ||= self.taggings.map{|t| t.tag.tag }
   end
 
-  def tags_a=(new_tag_names_a)
+  # the below used to be the write for tags_a=
+  # but I ripped that out
+
+  def new_tags=(tag_names)
+    new_tag_names_a = tag_names.split(",")
     self.taggings.each do |tagging|
       if !new_tag_names_a.include?(tagging.tag.tag)
         tagging.mark_for_destruction
       end
     end
 
-    new_tag_names_a.each do |tag_name|
-      if tag_name.to_s != "" && !self.tags.exists?(:tag => tag_name)
-        if t = Tag.active.where(:tag => tag_name).first
-          # we can't lookup whether the user is allowed to use this tag yet
-          # because we aren't assured to have a user_id by now; we'll do it in
-          # the validation with check_tags
-          tg = self.taggings.build
-          tg.tag_id = t.id
-        end
-      end
+    new_tag_names_a.reject{|tn| tn.blank?}.each do |tag_name|
+      tag = Tag.find_or_create_by_tag(tag_name)
+      self.taggings.build(tag_id: tag.id)
     end
   end
 

@@ -36,8 +36,8 @@ class HomeController < ApplicationController
   end
 
   def index
-    @stories, @show_more = get_from_cache(hottest: true) {
-      paginate stories.hottest
+    @stories, @show_more = get_from_cache {
+      paginate stories.by_buzz_rating
     }
 
     @rss_link ||= { :title => "RSS 2.0",

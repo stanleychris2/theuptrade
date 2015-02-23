@@ -77,9 +77,11 @@
 <div class= "col-md-9">
   <%= f.label :tags_a, "Tags:", :class => "required",
     :style => "line-height: 2.3em;" %>
-  <%= f.text_field :new_tags %>
-  
+  <%= f.text_field :new_tags, :class => "form-control", :placeholder => 'Separate tags with commas, for example: "AAPL, US EQUITY"' %>
 </div>
+<br>
+</div>
+<br>
 <!--
   <div class="boxline markdown_help_toggler">
     <a href="#" id="story_guidelines_toggler">

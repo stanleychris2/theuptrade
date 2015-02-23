@@ -15,6 +15,10 @@ class StoryRepository
     hottest.order('hotness')
   end
 
+  def by_buzz_rating
+    Story.by_buzz_rating
+  end
+
   def hidden
     hidden = base_scope
     if @user

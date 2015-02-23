@@ -17,7 +17,7 @@ class Story < ActiveRecord::Base
     :source => :user
 
   scope :unmerged, -> { where(:merged_story_id => nil) }
-
+  scope :by_buzz_rating, -> { select("*, (comments_count + upvotes + downvotes) as buzz_rating").order("buzz_rating desc") }
   validates_length_of :title, :in => 3..150
   validates_length_of :description, :maximum => (64 * 1024)
   validates_presence_of :user_id
@@ -65,7 +65,6 @@ class Story < ActiveRecord::Base
   end
 
 
-
   def self.find_similar_by_url(url)
     urls = [ url.to_s ]
     urls2 = [ url.to_s ]
@@ -107,6 +106,10 @@ class Story < ActiveRecord::Base
 
   def self.votes_cast_type
     Story.connection.adapter_name.match(/mysql/i) ? "signed" : "integer"
+  end
+
+  def buzz
+    comments_count + upvotes + downvotes
   end
 
   def as_json(options = {})

@@ -6,11 +6,13 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 <div class="container border">
 
   <div class="row overall">
-    <div class="voters col-xs-1 ">
+
+    <div class="voters col-xs-1">
       <% if @user %>
         <!---<a class="upvoter btn uvote"></a>-->
         <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
-        <div class="score text-center"><%= story.score %></div>
+        <div class="score text-center"><%= story.score %>
+        </div>
         <a class="downvoter btn btn-default down"><div class="arrow-down"></div></a>
       <% else %>
         <a class= "btn btn-default up" href="/login"><div class="arrow-up"></div></a>
@@ -19,7 +21,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
       <% end %>
     </div>
   
-    <div class="col-md-6 col-lg-8 col-xs-10 trade">
+    <div class="col-md-5 col-lg-7 col-xs-9 trade">
       <h4>
       <% if story.can_be_seen_by_user?(@user) %>
         <a id="title" href="<%= story.url_or_comments_url %>"><%= story.title %></a>
@@ -100,9 +102,10 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
         <% end %>
       <% end %>
     </div>
-      
     </div>
-
+          <div class="col-xs-1 buzz">
+  <%= story.buzz %>
+</div>
   <div class="col-xs-1 pull-right">
     <h5>
     <% if story.can_be_seen_by_user?(@user) %>

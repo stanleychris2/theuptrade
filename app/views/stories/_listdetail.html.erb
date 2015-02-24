@@ -26,7 +26,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
       <% if story.can_be_seen_by_user?(@user) %>
         <a id="title" href="<%= story.url_or_comments_url %>"><%= story.title %></a>
       <% end %>
-      <% if story.is_gone? %>`
+      <% if story.is_gone? %>
         [Story removed by <%= story.is_moderated? ? "moderator" :
           "original submitter" %>]
       <% end %>
@@ -67,7 +67,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
         <% end %>
         <% if !story.is_gone? && @user %>
           <% if @user && @user.can_downvote?(story) %>
-           <!--| <a class="flagger">flag</a> -->
+           <a class="flagger">flag</a>
           <% end %>
           <% if story.vote == 0 %>
             | <%= link_to "unhide", story_unhide_url(story.short_id),

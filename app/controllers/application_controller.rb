@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
 
   TAG_FILTER_COOKIE = :tag_filters
 
+  def current_user
+    @user
+  end
+  helper_method :current_user
+
   def authenticate_user
     if session[:u] &&
     (user = User.where(:session_token => session[:u].to_s).first) &&
@@ -51,6 +56,11 @@ class ApplicationController < ActionController::Base
     true
   end
 
+  def require_admin_or_mod
+    return if is_admin_or_mod?
+    redirect_to '/login', alert: "You do not have access to that section with this user."
+  end
+
   def require_logged_in_user
     if @user
       true
@@ -88,5 +98,11 @@ class ApplicationController < ActionController::Base
     if !@user && request[:format] == "rss" && params[:token].to_s.present?
       @user = User.where(:rss_token => params[:token].to_s).first
     end
+  end
+
+private
+
+  def is_admin_or_mod?
+    current_user && current_user.is_mod? || current_user.is_admin?
   end
 end

@@ -31,4 +31,15 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+
+  # hacks for making this work without devise
+  config.current_user_method { false }
+  require "rails_admin/application_controller"
+
+  module RailsAdmin
+    class ApplicationController < ::ApplicationController
+      before_filter :require_admin_or_mod
+    end
+  end
 end

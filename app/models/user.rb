@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
   def save_referral
     return if invitation_code.blank?
     invitation = Invitation.find_by_code(invitation_code)
-    self.invited_by_user = invitation.user 
+    self.invited_by_user = invitation.user
   end
 
   def as_json(options = {})
@@ -94,6 +94,14 @@ class User < ActiveRecord::Base
     ])
     h[:avatar_url] = avatar_url
     h
+  end
+
+  def is_admin?
+    is_admin
+  end
+
+  def is_mod?
+    is_moderator
   end
 
   def avatar_url

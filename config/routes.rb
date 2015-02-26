@@ -1,5 +1,6 @@
 Lobsters::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   scope :format => "html" do
     root :to => "home#index",
       :protocol => (Rails.application.config.force_ssl ? "https://" : "http://"),
@@ -12,7 +13,7 @@ Lobsters::Application.routes.draw do
 
     get "/page/:page" => "home#index"
 
-# newest action in home folder 
+# newest action in home folder
 
     get "/newest" => "home#newest", :format => /html|json|rss/
     get "/newest/page/:page" => "home#newest"

@@ -103,6 +103,6 @@ class ApplicationController < ActionController::Base
 private
 
   def is_admin_or_mod?
-    current_user && current_user.is_mod? || current_user.is_admin?
+    current_user.present? && (current_user.is_mod? || current_user.is_admin?)
   end
 end

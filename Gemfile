@@ -15,6 +15,10 @@ gem "puma"
 # gem for Sphinx full text search to function.
 gem 'rails_12factor'
 gem "thinking-sphinx", "~> 3.1.0"
+gem 'sass-rails', '>= 5.0.0.beta1'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'rails_admin'
+
 
 gem "uglifier", ">= 1.3.0"
 gem "jquery-rails"
@@ -35,7 +39,7 @@ gem "oauth"
 # for parsing incoming mail
 gem "mail"
 
-ruby '2.0.0'
+ruby "2.0.0"
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"

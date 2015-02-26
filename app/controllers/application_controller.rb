@@ -23,6 +23,13 @@ class ApplicationController < ActionController::Base
     true
   end
 
+  # this gives access to @user in views and controllers
+  def current_user
+    @user
+  end
+  # without the "helper_method" here current_user won't be allowed in a view
+  helper_method :current_user
+
   def increase_traffic_counter
     @traffic = 1.0
 

@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+
   before_filter :require_logged_in_user_or_400,
     :only => [ :upvote, :downvote, :unvote, :hide, :unhide, :preview ]
 
@@ -120,6 +121,8 @@ class StoriesController < ApplicationController
     @short_url = @story.short_id_url
 
     @comments = @story.comments.includes(:user).arrange_for_user(@user)
+
+    @story.record_impression(current_user)
 
     if params[:comment_short_id]
       @comments.each do |c,x|

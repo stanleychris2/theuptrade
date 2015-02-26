@@ -1,0 +1,6 @@
+1) create a controller called outbound_impressions
+2) in that controller you need a create action
+3) in the view where you display the link to the outbound resource, don't put the link url in. instead put the link route to your outbound impressions controller create action, with a method of POST and pass in the story id.
+4) in the create action of the OBI controller you log the impression off the story like I showed you in the stories show controller/action.
+5) then you redirect the user to the @story.url
+

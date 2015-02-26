@@ -1,4 +1,6 @@
 class Story < ActiveRecord::Base
+  include Impressions
+
   belongs_to :user
   belongs_to :merged_into_story,
     :class_name => "Story",

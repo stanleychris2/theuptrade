@@ -110,8 +110,13 @@ class Story < ActiveRecord::Base
     Story.connection.adapter_name.match(/mysql/i) ? "signed" : "integer"
   end
 
+  def story_impressions
+    Impression.count(:conditions => ["story_id = #{self.id}"])
+  end
+
+
   def buzz
-    comments_count + upvotes + downvotes
+    comments_count + upvotes + downvotes + story_impressions
   end
 
   def as_json(options = {})
@@ -132,7 +137,7 @@ class Story < ActiveRecord::Base
       h[:comments] = options[:with_comments]
     end
 
-    h
+    
   end
 
   def assign_short_id_and_upvote

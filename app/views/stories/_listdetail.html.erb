@@ -23,13 +23,9 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
   
     <div class="col-md-5 col-lg-7 col-xs-9 trade">
       <h4>
-      <% if story.can_be_seen_by_user?(@user) %>
-        <a id="title" href="<%= story.url_or_comments_url %>"><%= story.title %></a>
-      <% end %>
-      <% if story.is_gone? %>
-        [Story removed by <%= story.is_moderated? ? "moderator" :
-          "original submitter" %>]
-      <% end %>
+
+        <%= link_to story.title, controller: "outbound_impressions", action: "create", method: :post, :story_id => story.id %>
+        
       </h4>
 
       
@@ -104,7 +100,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
     </div>
     </div>
           <div class="col-xs-1 buzz">
-  <%= story.buzz %>
+  <%= story.buzz_rating %>
 </div>
   <div class="col-xs-1 pull-right">
     <h5>

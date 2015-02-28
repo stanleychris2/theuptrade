@@ -10,4 +10,12 @@ module Impressions
     impression.save
     impression
   end
+
+  def story_impression(story_id)
+  	impression = self.impressions.build(story_id: story_id)
+    impression.save
+    impression
+  end
+
+
 end

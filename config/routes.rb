@@ -7,6 +7,7 @@ Lobsters::Application.routes.draw do
       :as => "root"
 
       resources :registrations
+      resources :outbound_impressions
 
     get "/rss" => "home#index", :format => "rss"
     get "/hottest" => "home#index", :format => "json"

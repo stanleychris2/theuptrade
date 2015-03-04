@@ -1,4 +1,4 @@
-
+/* Company Colours */ 
 
 .formlabel {
   display: inline-block;
@@ -173,7 +173,7 @@ a:focus {
 }
 
 body{
-  background-color: $backgroundgrey;
+  background-color: #ffffff;
 }
 
 h4 {

@@ -1,3 +1,8 @@
+/* Company Colours */ 
+$darkgrey='#7f8c8d'
+$sitegreen='#27ae60'
+$backgroundgrey='ecf0f1'
+$textgrey='000000'
 
 body{
   font-family: MuseoSans,serif;
@@ -176,7 +181,7 @@ a:focus {
 }
 
 body{
-  background-color: #ecf0f1;
+  background-color: $backgroundgrey;
 }
 
 h4 {

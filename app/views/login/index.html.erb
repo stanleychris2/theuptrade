@@ -3,13 +3,11 @@
 
   The UpTrade is currently in beta. If you are an existing member, you can login below. If you would like to become a member to vote, comment, and submit stories please request an invite (also below). 
   </div>
-
-<div class="container overall">
+<div class="container">
+<div class="col-md-6">
     <h4>Login</h4>
 <br>
   <%= form_tag login_url do %>
-
- 
     <div class="form-group">
       <label for="inputEmail" class="col-xs-1 control-label" <%= label_tag :email, "E-mail or Username:" %> </label>
       <input type="text" class="form-control" id=<%= text_field_tag :email%>
@@ -20,28 +18,23 @@
       <input type="password" class="form-control" id=<%= password_field_tag :password%>
     </div>
     <%= submit_tag "Login", :class => "btn btn-default" %>
+    <% end %>
 
-
-    <div class="form-group">
-    <br>
     <p>
       Forgot your password? <%= link_to "Reset your password",
       forgot_password_url %>.
     </p>
+</div>
+<div class="col-md-6">
+  
+  
+<%= render "invitations/build" %>
 
-    <p>
-    Not a user yet?  Signup is by invitation only to combat spam and increase
-    accountability.  If you know <a href="/u/">a current user</a> of the site,
-    ask them for an
-    <% if Rails.application.allow_invitation_requests? %>
-      invitation or <a href="/invitations/request">request one publicly</a>.
-    <% else %>
-      invitation.
-    <% end %>
     </div>
   </row>
     <% if @referer.present? %>
       <%= hidden_field_tag :referer, @referer %>
     <% end %>
-  <% end %>
+
+</div>
 </div>

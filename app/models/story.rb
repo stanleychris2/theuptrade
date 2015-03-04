@@ -1,5 +1,6 @@
 class Story < ActiveRecord::Base
   include Impressions
+  include Buzzy
 
   belongs_to :user
   belongs_to :merged_into_story,
@@ -19,7 +20,6 @@ class Story < ActiveRecord::Base
     :source => :user
 
   scope :unmerged, -> { where(:merged_story_id => nil) }
-  scope :by_buzz_rating, -> { select("*, (comments_count + upvotes + downvotes) as buzz_rating").where("is_expired=0").order("buzz_rating desc") }
   validates_length_of :title, :in => 3..150
   validates_length_of :description, :maximum => (64 * 1024)
   validates_presence_of :user_id
@@ -110,14 +110,8 @@ class Story < ActiveRecord::Base
     Story.connection.adapter_name.match(/mysql/i) ? "signed" : "integer"
   end
 
-  def story_impressions
-    Impression.count(:conditions => ["story_id = #{self.id}"])
-  end
 
 
-  def buzz
-    comments_count + upvotes + downvotes + story_impressions
-  end
 
   def as_json(options = {})
     h = super(:only => [
@@ -137,7 +131,7 @@ class Story < ActiveRecord::Base
       h[:comments] = options[:with_comments]
     end
 
-    
+
   end
 
   def assign_short_id_and_upvote

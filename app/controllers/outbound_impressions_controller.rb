@@ -1,8 +1,23 @@
 class OutboundImpressionsController < ApplicationController
-	def index #why is create not working
-		@story = Story.find(params[:story_id]) #why did I have to do this step?
-		@story.story_impression(@story.id)
-		redirect_to @story.url
-	end
+  before_action :secure_trackable_types!
+
+  def create
+    trackable.record_impression(current_user)
+    redirect_to trackable.url
+  end
+
+private
+
+  def secure_trackable_types!
+    raise "Nice try funny guy" if !resource_is_not_trackable?
+  end
+
+  def trackable
+    @trackable ||= params[:trackable_type].constantize.find(params[:trackable_id])
+  end
+
+  def resource_is_not_trackable?
+    trackable.respond_to?(:impressions)
+  end
 end
 

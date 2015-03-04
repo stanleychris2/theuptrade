@@ -69,6 +69,8 @@ class LoginController < ApplicationController
     return index
   end
 
+  
+
   def set_new_password
     @title = "Reset Password"
 

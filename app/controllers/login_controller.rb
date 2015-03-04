@@ -10,6 +10,8 @@ class LoginController < ApplicationController
   end
 
   def index
+
+  @invitation_request = InvitationRequest.new
     @title = "Login"
     @referer ||= request.referer
     render :action => "index"
@@ -69,7 +71,7 @@ class LoginController < ApplicationController
     return index
   end
 
-  
+
 
   def set_new_password
     @title = "Reset Password"

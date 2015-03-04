@@ -16,7 +16,7 @@
   shown to any other users (except moderators).
   </p>
 
-  <%= form_for InvitationRequest.new do |f| %>
+  <%= form_for @invitation_request do |f| %>
     <p>
     <%= f.label :name, "Name:" %>
     <%= f.text_field :name, :size => 30, :class => "form-control" %>
@@ -35,7 +35,7 @@
     </p>
 
     <p>
-    <%= submit_tag "Request Invitation" %>
+    <%= f.submit "Request Invitation" %>
     </p>
   <% end %>
 </div>

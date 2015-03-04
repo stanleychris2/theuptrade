@@ -1,6 +1,6 @@
 class InvitationRequest < ActiveRecord::Base
-  validates :name, :presence => { message: "can't be blank" }
-  validates :email, :format => { :with => /\A[^@ ]+@[^@ ]+\.[^@ ]+\Z/ }
+  validates :name, :presence => true
+  validates :email, :format => { :with => /\A[^@ ]+@[^@ ]+\.[^@ ]+\Z/ }, message: "fuck you"
   validates :memo, presence: true
 
   before_create :create_code

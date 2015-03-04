@@ -6,6 +6,8 @@ Lobsters::Application.routes.draw do
       :protocol => (Rails.application.config.force_ssl ? "https://" : "http://"),
       :as => "root"
 
+
+      resources :invitation_requests
       resources :registrations
       resources :outbound_impressions
 

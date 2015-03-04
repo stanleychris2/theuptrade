@@ -30,10 +30,8 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    i = Invitation.new
-    i.user_id = @user.id
-    i.email = params[:email]
-    i.memo = params[:memo]
+    i = Invitation.new(email: params[:email], memo: params[:memo])
+    i.user = @user
 
     begin
       i.save!

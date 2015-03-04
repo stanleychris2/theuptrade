@@ -26,11 +26,8 @@
     </p>
 </div>
 <div class="col-md-6">
-  
-  
-<%= render "invitations/build" %>
-
-    </div>
+  <%= render "invitation_requests/form" %>
+</div>
   </row>
     <% if @referer.present? %>
       <%= hidden_field_tag :referer, @referer %>

@@ -207,7 +207,7 @@ DEPENDENCIES
   rails_admin
   rdiscount
   rspec-rails (~> 2.6)
-  sass-rails (>= 5.0.0.beta1)
+  sass-rails
   sprockets-rails
   sqlite3
   thinking-sphinx (~> 3.1.0)

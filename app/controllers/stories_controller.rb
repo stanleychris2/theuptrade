@@ -1,5 +1,4 @@
 class StoriesController < ApplicationController
-
   before_filter :require_logged_in_user_or_400,
     :only => [ :upvote, :downvote, :unvote, :hide, :unhide, :preview ]
 
@@ -110,8 +109,9 @@ class StoriesController < ApplicationController
   end
 
   def show
-    @story = Story.where(:short_id => params[:id]).first!
 
+    @story = Story.where(:short_id => params[:id]).first!
+    
     if @story.can_be_seen_by_user?(@user)
       @title = @story.title
     else

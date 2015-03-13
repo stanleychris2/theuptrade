@@ -99,8 +99,13 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
     </div>
           <div class="col-xs-1 buzz">
   <% if story.buzz > 0 %>
+<a id="example" rel="popover" data-html="true" 
+data-content="
+Comments: <%= story.comments_count %>
+Upvotes: <%= story.upvotes %>
+Downvotes: <%= story.downvotes %>
+Clicks: <%= story.impressions.count %>" data-original-title="Buzz"><%= story.buzz.to_i %></a>
 
-<%= story.buzz %>
   <% else %>
   <%= "Old..." %>
   <% end %>
@@ -141,5 +146,10 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
   </div>
 </div>
 
+<script>
+$(function ()
+{ $("#example").popover();
+});
+</script> 
 
 </li>

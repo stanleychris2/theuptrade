@@ -3,7 +3,11 @@ class OutboundImpressionsController < ApplicationController
 
   def create
     trackable.record_impression(current_user)
+    if trackable.url != ""
     redirect_to trackable.url
+    else
+    redirect_to trackable.comments_url
+    end
   end
 
 private

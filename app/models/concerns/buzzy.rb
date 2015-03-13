@@ -29,8 +29,8 @@ module Buzzy
 
     def impressions_sql
       "select count(trackable_id) from impressions \
-       where trackable_type='?' AND trackable_id = \
-       #{tableize(name)}.id"
+       where trackable_type='Story' AND trackable_id = \
+       stories.id"
     end
   end
 end

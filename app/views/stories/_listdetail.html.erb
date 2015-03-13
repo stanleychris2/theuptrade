@@ -98,7 +98,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
     </div>
     </div>
           <div class="col-xs-1 buzz">
-  <%= story.buzz %>
+  <%= story.buzz.to_i %>
 </div>
   <div class="col-xs-1 pull-right">
     <h5>

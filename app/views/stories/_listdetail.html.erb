@@ -98,7 +98,12 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
     </div>
     </div>
           <div class="col-xs-1 buzz">
-  <%= story.buzz.to_i %>
+  <% if story.buzz > 0 %>
+
+<%= story.buzz %>
+  <% else %>
+  <%= "Old..." %>
+  <% end %>
 </div>
   <div class="col-xs-1 pull-right">
     <h5>

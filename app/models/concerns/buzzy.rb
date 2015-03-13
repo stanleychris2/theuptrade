@@ -20,11 +20,11 @@ module Buzzy
   module ClassMethods
     def buzz_sql
       "(upvotes + downvotes + comments_count + \
-       (#{impressions_sql}) - (#{decay_score})).round as buzz"
+       (#{impressions_sql}) - (#{decay_score})) as buzz"
     end
 
     def decay_score
-      "SELECT abs(extract(epoch from NOW() - #{tableize(name)}.created_at)/99000000)"
+      "SELECT abs(extract(epoch from NOW() - #{tableize(name)}.created_at)/3600)"
     end
 
     def impressions_sql

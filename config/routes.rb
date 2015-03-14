@@ -58,7 +58,7 @@ Lobsters::Application.routes.draw do
     get "/t/:tag" => "home#tagged", :as => "tag", :format => /html|rss/
     get "/t/:tag/page/:page" => "home#tagged"
 
-    get "/search" => "search#index"
+    #get "/search" => "search#index"
 
     resources :stories do
       post "upvote"

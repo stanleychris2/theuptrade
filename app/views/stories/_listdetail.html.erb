@@ -23,7 +23,13 @@ data-content="
         <a class="downvoter btn btn-default down"><div class="arrow-down"></div></a>
       <% else %>
         <a class= "btn btn-default up" href="/login"><div class="arrow-up"></div></a>
-        <div class="score text-center"><%= story.score %></div>
+        <div class="score text-center">
+                    <a class="example pop" rel="popover" data-html="true" 
+data-content="
+<%= story.upvotes %> Upvotes<br>
+<%= story.downvotes %> Downvotes<br>
+" data-original-title="Polarity"><%= story.score %></a>
+        </div>
         <a class= "btn btn-default down" href="/login"><div class="arrow-down"></div></a>
       <% end %>
     </div>
@@ -122,7 +128,7 @@ data-content="
 <%= story.comments_count %> Comments<br>
 <%= story.upvotes %> Upvotes<br>
 <%= story.downvotes %> Downvotes<br>
-- Decay factor " data-original-title="Buzz">Old...</a>
+- Decay factor " data-original-title="Buzz">No buzz</a>
   <% end %>
 </div>
   <div class="col-xs-1 pull-right">

@@ -1,20 +1,8 @@
-<div class="box wide">
-  <div class="legend">
-    Request an Invitation
+
+  <div class="form-group">
+    <h4 style="padding-bottom: 8px;">Request an Invitation</h4>
   </div>
 
-  <p>
-  If you don't know (or can't find) an <a href="/u/">existing user</a> from
-  whom to request an invitation, you can make a public request for one.  This
-  will display your name and memo to all other logged-in users who can then
-  send you an invitation if they recognize you.
-  </p>
-
-  <p>
-  Your e-mail address must be valid and confirmed by visiting a URL e-mailed to
-  you before your request will be displayed.  Your e-mail address will not be
-  shown to any other users (except moderators).
-  </p>
 
   <%= form_for @invitation_request do |f| %>
     <p>
@@ -26,7 +14,7 @@
     <%= f.text_field :email, :size => 30, :class => "form-control" %>
     <br />
 
-    <%= f.label :memo, "URL:" %>
+    <%= f.label :memo, "Sentence about you, LinkedIn (or other website) URL:" %>
     <%= f.text_field :memo, :size => 30, :class => "form-control" %>
     <br />
     <label></label>
@@ -38,4 +26,4 @@
     <%= f.submit "Request Invitation" %>
     </p>
   <% end %>
-</div>
+

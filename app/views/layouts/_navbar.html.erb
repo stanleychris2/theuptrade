@@ -7,7 +7,7 @@
       </button>
       <a class="navbar-brand" href="/"><img src="https://s3.amazonaws.com/theuptrade/images/UP.svg", style="width: 200px; margin-top: -18px;"></a>
     </div>
-<!-- below is ruby code to tell us when / when not to render nav links -->
+
 
         <% links = {
           "/recent" => "Recent",
@@ -19,11 +19,11 @@
             "/stories/new" => "Submit Story" }) %>
         <% end %>
         
-        <% links.merge!({ "/search" => "Search" }) %>
+        
         
 
 
-<!-- This is where I am putting the navbar html/css... responsive etc all that good stuff -->
+
     <div class="navbar-collapse collapse navbar-responsive-collapse">
         <% links.each do |u,v| %>
           <ul class="nav navbar-nav">
@@ -33,7 +33,7 @@
             </li>
           </ul>
         <% end %>
-<!-- navbar right stuff -->
+
           <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="/filters" <%= @cur_url == "/filters" ?

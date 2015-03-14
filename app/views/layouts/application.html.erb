@@ -9,10 +9,16 @@
 <body>
 
 
+
 <%= render 'layouts/navbar' %>
     <%= yield %>
 <%= render 'layouts/footer' %>
 
+<script>
+$(function ()
+{ $(".example").popover({trigger: 'hover'});
+});
+</script>
 
 </body>
 </html>

@@ -99,15 +99,23 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
     </div>
           <div class="col-xs-1 buzz">
   <% if story.buzz > 0 %>
-<a id="example" rel="popover" data-html="true" 
+
+<a class="example" rel="popover" data-html="true" 
 data-content="
-Comments: <%= story.comments_count %>
-Upvotes: <%= story.upvotes %>
-Downvotes: <%= story.downvotes %>
-Clicks: <%= story.impressions.count %>" data-original-title="Buzz"><%= story.buzz.to_i %></a>
+- Clicks: <%= story.impressions.count %><br>
+- Comments: <%= story.comments_count %> <br>
+- Upvotes: <%= story.upvotes %><br>
+- Downvotes: <%= story.downvotes %><br>
+- And decay factor " data-original-title="Buzz"><%= story.buzz.to_i %></a>
 
   <% else %>
-  <%= "Old..." %>
+  <a class="example" rel="popover" data-html="true" 
+data-content="
+- Clicks: <%= story.impressions.count %><br>
+- Comments: <%= story.comments_count %> <br>
+- Upvotes: <%= story.upvotes %><br>
+- Downvotes: <%= story.downvotes %><br>
+- And decay factor " data-original-title="Buzz">Old...</a>
   <% end %>
 </div>
   <div class="col-xs-1 pull-right">
@@ -146,10 +154,6 @@ Clicks: <%= story.impressions.count %>" data-original-title="Buzz"><%= story.buz
   </div>
 </div>
 
-<script>
-$(function ()
-{ $("#example").popover();
-});
-</script> 
+
 
 </li>

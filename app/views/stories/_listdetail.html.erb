@@ -11,7 +11,14 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
       <% if @user %>
         <!---<a class="upvoter btn uvote"></a>-->
         <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
-        <div class="score text-center"><%= story.score %>
+        <div class="score text-center">
+
+          <a class="example pop" rel="popover" data-html="true" 
+data-content="
+<%= story.upvotes %> Upvotes<br>
+<%= story.downvotes %> Downvotes<br>
+" data-original-title="Polarity"><%= story.score %></a>
+          
         </div>
         <a class="downvoter btn btn-default down"><div class="arrow-down"></div></a>
       <% else %>
@@ -100,22 +107,22 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
           <div class="col-xs-1 buzz">
   <% if story.buzz > 0 %>
 
-<a class="example" rel="popover" data-html="true" 
+<a class="example pop" rel="popover" data-html="true" 
 data-content="
-- Clicks: <%= story.impressions.count %><br>
-- Comments: <%= story.comments_count %> <br>
-- Upvotes: <%= story.upvotes %><br>
-- Downvotes: <%= story.downvotes %><br>
-- And decay factor " data-original-title="Buzz"><%= story.buzz.to_i %></a>
+<%= story.impressions.count %> Clicks<br>
+<%= story.comments_count %> Comments<br>
+<%= story.upvotes %> Upvotes<br>
+<%= story.downvotes %> Downvotes<br>
+- Decay factor " data-original-title="Buzz"><%= story.buzz.to_i %></a>
 
   <% else %>
-  <a class="example" rel="popover" data-html="true" 
+<a class="example pop" rel="popover" data-html="true" 
 data-content="
-- Clicks: <%= story.impressions.count %><br>
-- Comments: <%= story.comments_count %> <br>
-- Upvotes: <%= story.upvotes %><br>
-- Downvotes: <%= story.downvotes %><br>
-- And decay factor " data-original-title="Buzz">Old...</a>
+<%= story.impressions.count %> Clicks<br>
+<%= story.comments_count %> Comments<br>
+<%= story.upvotes %> Upvotes<br>
+<%= story.downvotes %> Downvotes<br>
+- Decay factor " data-original-title="Buzz">Old...</a>
   <% end %>
 </div>
   <div class="col-xs-1 pull-right">

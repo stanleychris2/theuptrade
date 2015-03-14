@@ -194,12 +194,12 @@ h6 {
 
 .border {
     border-bottom: 1px solid #d2d5d4;
-    padding-bottom: 15px;
-    padding-top: 15px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
-.byline{
-
+.pop{
+  color: #373737;
 }
 
 .arrow-up {

@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+
+
 gem "rails", "4.0.8"
 gem 'bootstrap-sass'  
 
@@ -13,7 +15,7 @@ gem "puma"
 
 # NOTE: If you use PostgreSQL, you must still leave enabled the above mysql2
 # gem for Sphinx full text search to function.
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem "thinking-sphinx", "~> 3.1.0"
 gem 'sass-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
@@ -46,4 +48,5 @@ group :test, :development do
   gem "machinist"
   gem "sqlite3"
   gem "faker"
+  gem 'rails_12factor'
 end

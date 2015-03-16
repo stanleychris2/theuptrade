@@ -9,6 +9,20 @@
   font-size: 14px
 }
 
+.flash{
+  margin-left: 50px;
+}
+
+.flash-error {
+  background-color: #ecdddd;
+  padding: 10px;
+}
+
+.flash-success {
+  background-color: #e3f0d7;
+  padding: 10px;
+}
+
 .score {
   font-size: 16px;
   font-weight: 400;

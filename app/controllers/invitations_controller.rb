@@ -24,9 +24,8 @@ class InvitationsController < ApplicationController
     ir.is_verified = true
     ir.save!
 
-    flash[:success] = "Your invitation request has been validated and " <<
-      "will now be shown to other logged-in users."
-    return redirect_to "/invitations/request"
+    flash[:success] = "Success! Your invitation request has been validated, we'll send you an email shortly."
+    return redirect_to "/"
   end
 
   def create

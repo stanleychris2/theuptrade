@@ -55,7 +55,7 @@
             <li>
               <a href="/settings" <%= @cur_url == "/settings" ?
               raw("class=\"cur_url\"") : "" %>><%= @user.username %>
-              (<%= @user.karma %>)</a>
+              </a>
             </li>
             <li>
               <%= link_to "Logout", { :controller => "login", :action => "logout" },
@@ -82,4 +82,5 @@
       <% elsif flash[:success] %>
         <div class="flash-success col-md-6"><%= flash[:success] %></div>
       <% end %>
-    </div>
+  </div>    
+    

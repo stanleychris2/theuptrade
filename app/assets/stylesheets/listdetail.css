@@ -16,11 +16,13 @@
 .flash-error {
   background-color: #ecdddd;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .flash-success {
   background-color: #e3f0d7;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .score {

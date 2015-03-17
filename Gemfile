@@ -48,5 +48,4 @@ group :test, :development do
   gem "machinist"
   gem "sqlite3"
   gem "faker"
-  gem 'rails_12factor'
 end

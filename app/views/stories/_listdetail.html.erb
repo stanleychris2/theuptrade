@@ -8,6 +8,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
   <div class="row overall">
 
     <% if @user %>
+    
     <div class="voters col-xs-1">           
         <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
         <div class="score text-center example pop" rel="popover" data-html="true"
@@ -19,15 +20,19 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
         </div>
         <a class="downvoter btn btn-default down"><div class="arrow-down"></div></a>
       <% else %>
+       <div class="voters col-xs-1">      
         <a class= "btn btn-default up" href="/login"><div class="arrow-up"></div></a>
-        <div class="score text-center">
-                    <a class="example pop" rel="popover" data-html="true" 
-data-content="
-<%= story.upvotes %> Upvotes<br>
-<%= story.downvotes %> Downvotes<br>
-" data-original-title="Polarity"><%= story.score %></a>
-        </div>
+          <div class="score text-center example pop" rel="popover" data-html="true"
+          data-content=
+          "<%= story.upvotes %> Upvotes<br>
+          <%= story.downvotes %> Downvotes<br>" 
+          data-original-title="Polarity">
+          <%= story.score %>  
+          </div>
         <a class= "btn btn-default down" href="/login"><div class="arrow-down"></div></a>
+        
+
+        
       <% end %>
     </div>
   
@@ -141,6 +146,11 @@ data-content="
       <span class="pull-right">
       <%= story.domain %>
       </span>
+      <div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="christanley22" data-hashtags="#{story.title}">T</a>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
       <% if defined?(single_story) && single_story %>
         <% story.merged_stories.each do |ms| %>
           <br>

@@ -1,9 +1,10 @@
 Hello <%= @invitation.email %>,
 
-<%= @invitation.name %> has invited you to The UpTrade!
+<%= @invitation.user.username %> has invited you to The UpTrade!
 
 To accept this invitation and create an account, visit the URL below:
 
 <%= root_url %>invitations/<%= @invitation.code %>
 
 Enjoy
+

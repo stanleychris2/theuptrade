@@ -7,18 +7,15 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 
   <div class="row overall">
 
-    <div class="voters col-xs-1">
-      <% if @user %>
-        <!---<a class="upvoter btn uvote"></a>-->
+    <% if @user %>
+    <div class="voters col-xs-1">           
         <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
-        <div class="score text-center">
-
-          <a class="example pop" rel="popover" data-html="true" 
-data-content="
-<%= story.upvotes %> Upvotes<br>
-<%= story.downvotes %> Downvotes<br>
-" data-original-title="Polarity"><%= story.score %></a>
-          
+        <div class="score text-center example pop" rel="popover" data-html="true"
+          data-content=
+          "<%= story.upvotes %> Upvotes<br>
+          <%= story.downvotes %> Downvotes<br>" 
+          data-original-title="Polarity">
+          <%= story.score %>  
         </div>
         <a class="downvoter btn btn-default down"><div class="arrow-down"></div></a>
       <% else %>

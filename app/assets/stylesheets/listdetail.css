@@ -14,20 +14,22 @@
 }
 
 .flash-error {
-  background-color: #ecdddd;
+  background-color: #c0392b;
+  color: white;
   padding: 10px;
   border-radius: 5px;
 }
 
 .flash-success {
-  background-color: #e3f0d7;
+  background-color: #27ae60;
+  color: white;
   padding: 10px;
   border-radius: 5px;
 }
 
 .score {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .buzz {
@@ -81,30 +83,30 @@
 }
 
 .up {
-  background-color: #27ae60;
+  background-color: #ffffff;
 }
 
 .up:hover {
-  background: #373737;
+  background: #cccccc;
   text-decoration: none;
     -webkit-transition:width .25s, height .25s, background-color .25s, -webkit-transform .25s;
     transition:width .25s, height .25s, background-color .25s, transform .25s;
 }
 
 .down:hover {
-  background: #373737;
+  background: #cccccc;
   text-decoration: none;
     -webkit-transition:width .25s, height .25s, background-color .25s, -webkit-transform .25s;
     transition:width .25s, height .25s, background-color .25s, transform .25s;
 }
 
 .down {
-  background-color: #c0392b;
+  background-color: #ffffff;
 }
 
 .tagbutton:hover{
-  background: #ecf0f1;
-  color: black;
+  background: #0062ff;
+  color: white;
 }
 .tagbutton {
   font-size: 12px;
@@ -128,6 +130,7 @@
 
 body {
   font-size: 12px;
+  font-weight: 300;
 }
 
 ol {
@@ -163,11 +166,11 @@ margin-bottom: 8px;
 }
 
 #username:hover{
-  color: #67be15;
+  color: #0062ff;
 }
 
 #username {
-  color: #777777;
+  color: #373737;
 }
 
 /*
@@ -221,19 +224,19 @@ h6 {
 .arrow-up {
   width: 0; 
   height: 0; 
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
   
-  border-bottom: 6px solid #ffffff;
+  border-bottom: 15px solid #27ae60;
 }
 
 .arrow-down {
   width: 0; 
   height: 0; 
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
   
-  border-top: 6px solid #ffffff;
+  border-top: 15px solid #c0392b;
 }
 
 html {

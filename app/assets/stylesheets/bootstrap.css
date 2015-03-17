@@ -2819,12 +2819,11 @@ fieldset[disabled] .btn {
   opacity: .65;
 }
 .btn-default {
-color: #000000;
-background-color: #ffffff;
-border-color: #000000;
-border-bottom-style: solid;
+color: #ffffff;
+background-color: #0062ff;
 border-radius: 3px;
 border-width: 1px;
+font-size: 12px;
 
 }
 .btn-default:hover,
@@ -4200,7 +4199,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #427bff;
+  color: #006bff;
   padding-bottom: 10px;
   padding-top: 25px;
   font-size: 14px;

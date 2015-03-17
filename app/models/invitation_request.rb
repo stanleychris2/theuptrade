@@ -4,8 +4,9 @@ class InvitationRequest < ActiveRecord::Base
   validates :memo, presence: true
 
   before_create :create_code
-  after_create :send_email
-
+  #after_create :send_email
+  #^ this otherwise sends an email twice... 
+  
   def self.verified_count
     InvitationRequest.where(:is_verified => true).count
   end

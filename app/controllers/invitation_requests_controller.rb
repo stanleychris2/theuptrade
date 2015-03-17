@@ -6,10 +6,9 @@ class InvitationRequestsController < ApplicationController
 
   def create
     if new_invitation.save
-      new_invitation.send_email
-      redirect_to :root
+       new_invitation.send_email
+       redirect_to :root
     else
-    raise new_invitation.errors.inspect
       render :new
     end
   end

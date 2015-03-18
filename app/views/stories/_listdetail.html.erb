@@ -143,13 +143,19 @@ data-content="
             title="<%= tagging.tag.description %>"><%= tagging.tag.tag %></a>
         <% end %>
       </h5>
-      <span class="pull-right">
+      <br>
+      <div class="pull-right">
       <%= story.domain %>
-      </span>
-      <div>
-<a href="https://twitter.com/share" class="twitter-share-button" data-via="christanley22" data-hashtags="#{story.title}">T</a>
+      </div>
+      <br>
+        <div class="pull-right">
+        <a href="https://twitter.com/share?url=<%= story.url %>&text=<%= story.title %>&via=theuptrade&hashtags=<%= story.hashtags %>"
+          target="_blank" class="pull-right">
+          <img src="https://s3.amazonaws.com/theuptrade/images/Twitter.png" style="width: 25px;"></a>
 
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=<%= story.url %>&title=<%= story.title %>&source=LinkedIn"target="_blank" class="pull-right">
+          <img src="https://s3.amazonaws.com/theuptrade/images/LinkedIn.png" style="width: 25px;"></a>  
+        </div>
 
       <% if defined?(single_story) && single_story %>
         <% story.merged_stories.each do |ms| %>

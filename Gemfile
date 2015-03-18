@@ -33,6 +33,9 @@ gem "bcrypt-ruby", "~> 3.1.2"
 gem "nokogiri", "= 1.6.1"
 gem "htmlentities"
 gem "rdiscount"
+gem 'shareable'
+
+
 
 
 # for twitter-posting bot

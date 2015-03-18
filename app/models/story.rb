@@ -66,6 +66,9 @@ class Story < ActiveRecord::Base
     check_tags
   end
 
+  def hashtags
+    self.tags_a.join(", ")
+  end
 
   def self.find_similar_by_url(url)
     urls = [ url.to_s ]
@@ -218,6 +221,7 @@ class Story < ActiveRecord::Base
         gsub(/^www\d*\./, "")    # possible "www3." in host
     end
   end
+
 
   def fetch_story_cache!
     if self.url.present?
@@ -408,11 +412,14 @@ class Story < ActiveRecord::Base
     @_tags_a ||= self.taggings.map{|t| t.tag.tag }
   end
 
+
+
+
   # the below used to be the write for tags_a=
   # but I ripped that out
 
   def new_tags=(tag_names)
-    new_tag_names_a = tag_names.split(",")
+    new_tag_names_a = tag_names.upcase.split(",")
     self.taggings.each do |tagging|
       if !new_tag_names_a.include?(tagging.tag.tag)
         tagging.mark_for_destruction

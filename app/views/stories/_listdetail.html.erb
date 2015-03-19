@@ -130,11 +130,12 @@ data-content="
 <%= story.comments_count %> Comments<br>
 <%= story.upvotes %> Upvotes<br>
 <%= story.downvotes %> Downvotes<br>
-- Decay factor " data-original-title="Buzz">No buzz</a>
+- Decay factor " data-original-title="Buzz">0</a>
   <% end %>
 </div>
   <div class="col-xs-1 pull-right">
-    <h5>
+    
+    <div class="pull-right col-xs-1">
     <% if story.can_be_seen_by_user?(@user) %>
         <% story.taggings.sort_by{|t| t.tag.tag }.sort_by{|t|
         t.tag.is_media?? -1 : 0 }.each do |tagging| %>
@@ -142,20 +143,23 @@ data-content="
             class="<%= tagging.tag.css_class %>, btn tagbutton pull-right"
             title="<%= tagging.tag.description %>"><%= tagging.tag.tag %></a>
         <% end %>
-      </h5>
-      <br>
-      <div class="pull-right">
-      <%= story.domain %>
       </div>
       <br>
-        <div class="pull-right">
+      <div class="pull-right col-xs-1">
         <a href="https://twitter.com/share?url=<%= story.url %>&text=<%= story.title %>&via=theuptrade&hashtags=<%= story.hashtags %>"
           target="_blank" class="pull-right">
           <img src="https://s3.amazonaws.com/theuptrade/images/Twitter.png" style="width: 25px;"></a>
 
         <a href="https://www.linkedin.com/shareArticle?mini=true&url=<%= story.url %>&title=<%= story.title %>&source=LinkedIn"target="_blank" class="pull-right">
-          <img src="https://s3.amazonaws.com/theuptrade/images/LinkedIn.png" style="width: 25px;"></a>  
+          <img src="https://s3.amazonaws.com/theuptrade/images/LinkedIn.png" style="width: 25px;"></a> 
+      </div>
+      <br>
+        
+        <div class="pull-right col-xs-1">
+           <%= story.domain %>
         </div>
+      
+      </div>
 
       <% if defined?(single_story) && single_story %>
         <% story.merged_stories.each do |ms| %>

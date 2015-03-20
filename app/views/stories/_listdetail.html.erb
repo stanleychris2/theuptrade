@@ -1,3 +1,4 @@
+<% if story.is_visable? %>
 <li id="story_<%= story.short_id %>" data-shortid="<%= story.short_id %>"
 class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 "downvoted" : "" %> <%= story.vote == 0 ? "hidden" : "" %> <%= story.is_expired? ?
@@ -134,9 +135,12 @@ data-content="
         <% end %>
       <% end %>
     <% end %>
+ 
   </div>
 </div>
 
 
 
+
 </li>
+ <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320024037) do
+ActiveRecord::Schema.define(version: 20150320193014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150320024037) do
     t.boolean  "is_deleted",                                              default: false
     t.boolean  "is_moderated",                                            default: false
     t.boolean  "is_from_email",                                           default: false
+    t.boolean  "is_visable",                                              default: true
   end
 
   add_index "comments", ["confidence"], name: "confidence_idx", using: :btree
@@ -115,19 +116,20 @@ ActiveRecord::Schema.define(version: 20150320024037) do
     t.datetime "created_at"
     t.integer  "user_id"
     t.string   "url",                    limit: 250,                           default: ""
-    t.string   "title",                  limit: 150,                           default: "",  null: false
+    t.string   "title",                  limit: 150,                           default: "",   null: false
     t.text     "description"
-    t.string   "short_id",               limit: 6,                             default: "",  null: false
-    t.integer  "is_expired",             limit: 2,                             default: 0,   null: false
-    t.integer  "upvotes",                                                      default: 0,   null: false
-    t.integer  "downvotes",                                                    default: 0,   null: false
-    t.integer  "is_moderated",           limit: 2,                             default: 0,   null: false
-    t.decimal  "hotness",                            precision: 20, scale: 10, default: 0.0, null: false
+    t.string   "short_id",               limit: 6,                             default: "",   null: false
+    t.integer  "is_expired",             limit: 2,                             default: 0,    null: false
+    t.integer  "upvotes",                                                      default: 0,    null: false
+    t.integer  "downvotes",                                                    default: 0,    null: false
+    t.integer  "is_moderated",           limit: 2,                             default: 0,    null: false
+    t.decimal  "hotness",                            precision: 20, scale: 10, default: 0.0,  null: false
     t.text     "markeddown_description"
     t.text     "story_cache"
-    t.integer  "comments_count",                                               default: 0,   null: false
+    t.integer  "comments_count",                                               default: 0,    null: false
     t.integer  "merged_story_id"
     t.string   "twitter_id",             limit: 20
+    t.boolean  "is_visable",                                                   default: true
   end
 
   add_index "stories", ["hotness"], name: "hotness_idx", using: :btree

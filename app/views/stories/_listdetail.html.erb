@@ -135,7 +135,7 @@ data-content="
 </div>
   <div class="col-xs-1 pull-right">
     
-    <div class="pull-right col-xs-1">
+    <div class="pull-right col-xs-12">
     <% if story.can_be_seen_by_user?(@user) %>
         <% story.taggings.sort_by{|t| t.tag.tag }.sort_by{|t|
         t.tag.is_media?? -1 : 0 }.each do |tagging| %>
@@ -145,7 +145,7 @@ data-content="
         <% end %>
       </div>
       <br>
-      <div class="pull-right col-xs-1">
+      <div class="pull-right col-xs-12">
         <a href="https://twitter.com/share?url=<%= story.url %>&text=<%= story.title %>&via=theuptrade&hashtags=<%= story.hashtags %>"
           target="_blank" class="pull-right">
           <img src="https://s3.amazonaws.com/theuptrade/images/Twitter.png" style="width: 25px;"></a>
@@ -155,7 +155,7 @@ data-content="
       </div>
       <br>
         
-        <div class="pull-right col-xs-1">
+        <div class="pull-right col-xs-12" style="text-align: -webkit-right">
            <%= story.domain %>
         </div>
       

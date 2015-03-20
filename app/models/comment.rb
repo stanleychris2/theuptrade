@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  include Flags
+  
   belongs_to :user
   belongs_to :story,
     :inverse_of => :comments

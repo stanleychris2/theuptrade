@@ -8,7 +8,6 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
   <div class="row overall">
 
     <% if @user %>
-    
     <div class="voters col-xs-1">           
         <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
         <div class="score text-center example pop" rel="popover" data-html="true"
@@ -30,65 +29,26 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
           <%= story.score %>  
           </div>
         <a class= "btn btn-default down" href="/login"><div class="arrow-down"></div></a>
-        
-
-        
       <% end %>
     </div>
-  
+
     <div class="col-md-5 col-lg-7 col-xs-9 trade">
       <h4>
         <%= link_to story.title, outbound_impressions_url(trackable_id: story.id, trackable_type: "Story"), method: :post %>
       </h4>
 
-      
       <div class="col-xs-7" style="padding-left: 0px;">
-        
-      <% if story.previewing %>
-        by <a><%= story.user.username %></a>
-        just now
-      <% else %>
         by <strong><a id="username" href ="/u/<%= story.user.username %>"><%= story.user.username
           %></a> </strong><%= raw(time_ago_in_words_label(story.created_at).
           gsub(/^about /, "")) %> ago
-
         <% if story.is_editable_by_user?(@user) %>
-          |
-          <a href="<%= edit_story_url(story.short_id) %>">edit</a>
+          | <a href="<%= edit_story_url(story.short_id) %>">edit</a>
+        <% end %>
+        
+        <% if @user %>
+           | <%= link_to "flag", flags_url(flaggable_id: story.id, flaggable_type: "Story"), method: :post, :data => {:confirm => "Are you sure you want to flag this story?"} %>
+        <% end %>
 
-          <% if story.is_gone? && story.is_undeletable_by_user?(@user) %>
-            |
-            <%= link_to "undelete", story_undelete_url(story.short_id),
-              :method => :post, :data => {
-              :confirm => "Are you sure you want to undelete this story?" } %>
-          <% elsif !story.is_gone? %>
-            |
-            <% if story.user_id != @user.try(:id) &&
-            @user.try(:is_moderator?) %>
-              <%= link_to "delete", story_url(story.short_id),
-                :method => :delete, :class => "mod_story_link" %>
-            <% else %>
-              <%= link_to "delete", story_url(story.short_id),
-                :method => :delete, :data => {
-                :confirm => "Are you sure you want to delete this story?" } %>
-            <% end %>
-          <% end %>
-        <% end %>
-        <% if !story.is_gone? && @user %>
-          <% if @user && @user.can_downvote?(story) %>
-           <a class="flagger">flag</a>
-          <% end %>
-          <% if story.vote == 0 %>
-            | <%= link_to "unhide", story_unhide_url(story.short_id),
-              :class => "hider" %>
-          <% else %>
-            | <%= link_to "hide", story_hide_url(story.short_id),
-              :class => "hider" %>
-          <% end %>
-          <% if defined?(single_story) && single_story && story.hider_count > 0 %>
-            (hidden by <%= pluralize(story.hider_count, "user") %>)
-          <% end %>
-        <% end %>
         <div class="row comments_label"> 
         <% if !story.is_gone? && (@user || story.comments_count > 0) %>
         
@@ -102,14 +62,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
           <a href= "/login">Login to start discussion</a>
         <% end %>
           </div>
-        
 
-        <% if defined?(single_story) && single_story %>
-          <% if story.downvotes > 0 %>
-            | <%= story.vote_summary_for(@user).downcase %>
-          <% end %>
-        <% end %>
-      <% end %>
     </div>
     </div>
           <div class="col-xs-1 buzz">

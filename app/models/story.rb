@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   include Impressions
   include Buzzy
+  include Flags
 
   belongs_to :user
   belongs_to :merged_into_story,

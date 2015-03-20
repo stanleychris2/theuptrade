@@ -1,4 +1,6 @@
 Lobsters::Application.routes.draw do
+  resources :flags
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   scope :format => "html" do

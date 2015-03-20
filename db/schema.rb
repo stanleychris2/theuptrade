@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226170539) do
+ActiveRecord::Schema.define(version: 20150320024037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 20150226170539) do
   add_index "comments", ["short_id"], name: "short_id", unique: true, using: :btree
   add_index "comments", ["story_id", "short_id"], name: "story_id_short_id", using: :btree
   add_index "comments", ["thread_id"], name: "thread_id", using: :btree
+
+  create_table "flags", force: true do |t|
+    t.integer  "flaggable_id"
+    t.string   "flaggable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "flags", ["user_id"], name: "index_flags_on_user_id", using: :btree
 
   create_table "impressions", force: true do |t|
     t.integer  "trackable_id"

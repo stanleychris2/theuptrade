@@ -17,5 +17,4 @@ module Impressions
     impression
   end
 
-
 end

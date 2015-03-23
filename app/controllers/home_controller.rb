@@ -4,25 +4,24 @@ class HomeController < ApplicationController
   before_filter { @page = page }
   before_filter :require_logged_in_user, :only => [ :upvoted ]
 
+
   def about
-    begin
-      render :action => "about"
-    rescue
-      render :text => "<div class=\"box wide\">" <<
-        "A mystery." <<
-        "</div>", :layout => "application"
-    end
+    render "about.html.erb"
+  end
+
+  def terms
+    render "tos.html.erb"
+  end
+
+  def rules
+    render "rules.html.erb"
   end
 
   def privacy
-    begin
-      render :action => "privacy"
-    rescue
-      render :text => "<div class=\"box wide\">" <<
-        "You apparently have no privacy." <<
-        "</div>", :layout => "application"
-    end
+    render "privacy.html.erb"
   end
+
+  
 
   def hidden
     @stories, @show_more = get_from_cache(hidden: true) {

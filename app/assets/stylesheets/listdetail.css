@@ -104,6 +104,12 @@
   background-color: #ffffff;
 }
 
+.about{
+  margin-right: auto;
+  margin-left: auto;
+  float: none;
+}
+
 .tagbutton:hover{
   background: #0062ff;
   color: white;
@@ -124,12 +130,16 @@
 
 }
 
+.center{
+  text-align: center;
+}
+
 .domain {
   font-size: 10px;
 }
 
 body {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 300;
 }
 

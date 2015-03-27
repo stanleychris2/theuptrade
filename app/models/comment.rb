@@ -368,7 +368,6 @@ class Comment < ActiveRecord::Base
     }.join(", ")
   end
 
-
   def undelete_for_user(user)
     Comment.record_timestamps = false
 

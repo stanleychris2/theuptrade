@@ -13,8 +13,8 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
     <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
         <div class="score text-center example pop" rel="popover" data-html="true"
           data-content=
-          "<%= story.upvotes %> Upvotes<br>
-          <%= story.downvotes %> Downvotes<br>" 
+          "<%= story.upvotes %> Agree<br>
+          <%= story.downvotes %> Disagree<br>" 
           data-original-title="Polarity">
           <%= story.score %>  
         </div>
@@ -24,8 +24,8 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
         <a class= "btn btn-default up" href="/login"><div class="arrow-up"></div></a>
           <div class="score text-center example pop" rel="popover" data-html="true"
           data-content=
-          "<%= story.upvotes %> Upvotes<br>
-          <%= story.downvotes %> Downvotes<br>" 
+          "<%= story.upvotes %> Agree<br>
+          <%= story.downvotes %> Disagree<br>" 
           data-original-title="Polarity">
           <%= story.score %>  
           </div>

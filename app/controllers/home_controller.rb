@@ -6,19 +6,15 @@ class HomeController < ApplicationController
 
 
   def about
-    render "about.html.erb"
+    render "home/about.html.erb"
   end
 
   def terms
-    render "tos.html.erb"
-  end
-
-  def rules
-    render "rules.html.erb"
+    render "home/tos.html.erb"
   end
 
   def privacy
-    render "privacy.html.erb"
+    render "home/privacy.html.erb"
   end
 
   

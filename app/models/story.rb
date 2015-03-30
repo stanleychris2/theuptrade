@@ -391,8 +391,9 @@ class Story < ActiveRecord::Base
     "/s/#{self.short_id}"
   end
 
+
   def score
-    upvotes - downvotes
+   upvotes - downvotes
   end
 
   def tagging_changes

@@ -10,7 +10,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 
     <% if @user %>
     <div class="voters col-xs-1">           
-        <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
+    <a class="upvoter btn btn-default up"><div class="arrow-up"></div></a>
         <div class="score text-center example pop" rel="popover" data-html="true"
           data-content=
           "<%= story.upvotes %> Upvotes<br>
@@ -66,7 +66,7 @@ class="story <%= story.vote == 1 ? "upvoted" : "" %> <%= story.vote == -1 ?
 
     </div>
     </div>
-          <div class="col-xs-1 buzz">
+          <!--<div class="col-xs-1 buzz">
   <% if story.buzz > 0 %>
 
 <a class="example pop" rel="popover" data-html="true" 
@@ -86,7 +86,7 @@ data-content="
 <%= story.downvotes %> Downvotes<br>
 - Decay factor " data-original-title="Buzz">0</a>
   <% end %>
-</div>
+</div>-->
   <div class="col-xs-1 pull-right">
     
     <div class="pull-right col-xs-12">

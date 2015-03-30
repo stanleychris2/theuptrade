@@ -1006,7 +1006,7 @@ h6,
 .h5,
 .h6 {
   font-family: inherit;
-  font-weight: 200;
+  font-weight: 400;
   line-height: 1.1;
   color: inherit;
 }
@@ -4203,7 +4203,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-bottom: 10px;
   padding-top: 25px;
   font-size: 14px;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 .navbar-default .navbar-nav > li > a:hover,

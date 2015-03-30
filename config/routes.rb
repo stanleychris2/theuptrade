@@ -122,10 +122,9 @@ Lobsters::Application.routes.draw do
     get "/moderations" => "moderations#index"
     get "/moderations/page/:page" => "moderations#index"
 
-    get "/privacy" => "home#privacy"
-    get "/rules" => "home#rules"
-    get "/tos" => "home#terms"
-    get "/about" => "home#about"
+    get "/privacy" => "pages#privacy"
+    get "/tos" => "pages#terms"
+    get "/about" => "pages#about"
 
     get "/resettraffic" => "home#resettraffic"
   end

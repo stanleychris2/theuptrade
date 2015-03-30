@@ -3,20 +3,6 @@ class HomeController < ApplicationController
   before_filter :find_user_from_rss_token, :only => [ :index, :newest ]
   before_filter { @page = page }
   before_filter :require_logged_in_user, :only => [ :upvoted ]
-
-
-  def about
-    render "home/about.html.erb"
-  end
-
-  def terms
-    render "home/tos.html.erb"
-  end
-
-  def privacy
-    render "home/privacy.html.erb"
-  end
-
   
 
   def hidden

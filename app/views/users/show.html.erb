@@ -22,15 +22,17 @@
   <% end %>
 
     <% if @showing_user.is_active? %>
-    <h6>About</h6>
+    <h3>About</h3>
 
-    <div id="user_about" class="col-xs-12">
+    <div id="user_about" class="col-xs-12 border">
+      <div class="col-xs-8 about">
       <% if @showing_user.about.present? %>
         <%= raw @showing_user.linkified_about %>
       <% else %>
         <span class="na">A mystery...</span>
       <% end %>
     </div>
+  </div>
   <% end %>
 
 

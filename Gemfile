@@ -6,6 +6,7 @@ gem "rails", "4.0.8"
 gem 'bootstrap-sass'  
 
 gem "unicorn"
+gem 'intercom-rails'
 
 gem "mysql2", ">= 0.3.14"
 

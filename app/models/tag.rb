@@ -16,6 +16,10 @@ class Tag < ActiveRecord::Base
     self.tag
   end
 
+  def name
+    self.tag
+  end
+
   def self.all_with_filtered_counts_for(user)
     counts = TagFilter.group(:tag_id).count
 

@@ -1,7 +1,7 @@
 ###UpTrade Rails Project
 
 This is the source code to the site operating at
-https://theuptrade.com.  It is a Rails 4 codebase and uses a
+http://www.theuptrade.com.  It is a Rails 4 codebase and uses a
 PostgreSQL backend for the database. This is a fork from the codebase 
 located at lobste.rs with changes made to the markup and user 
 authentication code. 
